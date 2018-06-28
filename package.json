@@ -1,0 +1,9 @@
+{
+  "name": "test-locktrip-service-layer",
+  "version": "1.0.0",
+  "main": "Utils/Requester/index.js",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
