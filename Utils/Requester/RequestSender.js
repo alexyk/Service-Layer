@@ -4,9 +4,9 @@ import RequestParams from './RequestParams';
 import { domainPrefix } from '../config';
 
 export default class RequestSender {
-    constructor(storage) {
+    constructor(storage, headers = {}) {
         this._storage = storage;
-		this.RequestParams = new RequestParams(storage);
+		this.RequestParams = new RequestParams(storage, headers);
     }
 
     async sendRequest(endpoint, method, postObj = null, captchaToken = null) {
@@ -14,23 +14,29 @@ export default class RequestSender {
         let requestHeaders = await methodRef(postObj);
 
         return fetch(endpoint, requestHeaders)
-            .then((res) => {
-                if (!res.ok) {
+            .then((response) => {
+                if (!response.ok) {
                     return {
-                        response: res.json().then((r) => {
-                            if (r.errors && r.errors.ExpiredJwt) {
-                                this._storage.removeItem(`${domainPrefix}.auth.lockchain`);
-                                this._storage.removeItem(`${domainPrefix}.auth.username`);
-                            }
+                        body: {},
+                        success: !response.ok,
+                        errors: response.json().then((r) => {
+                            this.checkExpiredJwtAndLogOff(r)
                             return r;
-                        }),
-                        success: !res.ok
+                        })
                     };
                 }
                 return {
-                    response: res,
-                    success: res.ok
+                    body: response,
+                    success: response.ok,
+                    errors: {}
                 };
             });
+    }
+
+    checkExpiredJwtAndLogOff(r) {
+        if (r.errors && r.errors.ExpiredJwt) {
+            this._storage.removeItem(`${domainPrefix}.auth.lockchain`);
+            this._storage.removeItem(`${domainPrefix}.auth.username`);
+        }
     }
 }

@@ -7,30 +7,30 @@ export default class RequestParams {
 
         this._headers = Object.assign(headers, {
             'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'X-Device-Version': '49365f68-42e1-11e8-842f-0ed5f89f718b'
+            'Content-Type': 'application/json'
         });
     }
 
-    async getHeaders() {
-        const auth = await this._storage.getItem(`${domainPrefix}.auth.lockchain`);
-
-        const headers = {
-            'Authorization': this.auth,
+    async getAuthHeader() {
+        return {
+            'Authorization': await this._storage.getItem(`${domainPrefix}.auth.lockchain`)
         }
-        return Object.assign(this._headers, headers)
+    }
+
+    async getAllHeaders() {
+        return Object.assign(this._headers, await getAuthHeader())
     }
 
     async GET() {
         return {
-            headers: await this.getHeaders(),
+            headers: await this.getAllHeaders(),
             method: 'GET'
         }
     }
 
     async POST(object) {
         return {
-            headers: await this.getHeaders(),
+            headers: await this.getAllHeaders(),
             method: 'POST',
             body: JSON.stringify(object)
         }
@@ -38,7 +38,7 @@ export default class RequestParams {
 
     async DELETE() {
         return {
-            headers: await this.getHeaders(),
+            headers: await this.getAllHeaders(),
             method: 'DELETE'
         }
     }
