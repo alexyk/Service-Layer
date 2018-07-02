@@ -34,6 +34,13 @@ export default class RequestEndpoints {
         }
     }
 
+    /**
+     * 
+     * @param {String} routeName 
+     * @param {Array} params 
+     * @param {Array} query 
+     * @returns {String}
+     */
     GetRoute(routeName, params, query) {
         let rawRoute = this.routes[routeName];
         let url = rawRoute;
@@ -48,9 +55,14 @@ export default class RequestEndpoints {
         return url;
     }
 
+    /**
+     *
+     * @param {Array} query
+     * @returns {String}
+     */
     processQuery(query) {
         // Remove empty, undefined, null and e.g. items from array
-        let filteredQuery = query.filter(function(e){return e}); ;
+        let filteredQuery = query.filter(function (e) { return e });;
 
         // Create Key-value pairs
         let queryKvp = '';
@@ -68,6 +80,12 @@ export default class RequestEndpoints {
         return finalQuery;
     }
 
+    /**
+     * 
+     * @param {String} route 
+     * @param {Array} params 
+     * @returns {String}
+     */
     replaceParams(route, params) {
         // Count parameters with regex e.g. {param} || {id}
         const pattern = /{(\w+)}/g;
@@ -85,6 +103,12 @@ export default class RequestEndpoints {
         return replacedUrl
     }
 
+    /**
+     * 
+     * @param {String} source 
+     * @param {Array} params 
+     * @returns {String}
+     */
     format(source, params) {
         // Replace every {0},{1} with passed params
         for (let i = 0; i <= params.length; i++) {

@@ -9,6 +9,13 @@ export default class RequestSender {
 		this.RequestParams = new RequestParams(storage, headers);
     }
 
+    /**
+     * 
+     * @param {String} endpoint 
+     * @param {Enumerator} method 
+     * @param {Object} postObj 
+     * @param {String} captchaToken
+     */
     async sendRequest(endpoint, method, postObj = null, captchaToken = null) {
         const methodRef = this.RequestParams[method].bind(this.RequestParams);
         let requestHeaders = await methodRef(postObj);

@@ -11,16 +11,25 @@ export default class RequestParams {
         });
     }
 
+    /**
+     * @returns {Object}
+     */
     async getAuthHeader() {
         return {
             'Authorization': await this._storage.getItem(`${domainPrefix}.auth.locktrip`)
         }
     }
 
+    /**
+     * @returns {Object}
+     */
     async getAllHeaders() {
         return Object.assign(this._headers, await this.getAuthHeader())
     }
 
+    /**
+     * @returns {Object}
+     */
     async GET() {
         return {
             headers: await this.getAllHeaders(),
@@ -28,6 +37,11 @@ export default class RequestParams {
         }
     }
 
+    /**
+     * 
+     * @param {Object} object
+     * @returns {Object}
+     */
     async POST(object) {
         return {
             headers: await this.getAllHeaders(),
@@ -36,6 +50,9 @@ export default class RequestParams {
         }
     }
 
+    /**
+     * @returns {Object}
+     */
     async DELETE() {
         return {
             headers: await this.getAllHeaders(),
