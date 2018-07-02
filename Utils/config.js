@@ -3,7 +3,7 @@ export const apiHost = 'https://alpha.locktrip.com/api/';
 export const imgHost = 'https://static.locktrip.com/';
 export const basePath = 'https://alpha.locktrip.com/';
 export const routerPrefix = '.';
-export const domainPrefix = 'rc';
+export const domainPrefix = 'local';
 export const PUBLIC_URL = 'https://alpha.locktrip.com/';
 
 export const Config = {

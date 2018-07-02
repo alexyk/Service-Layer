@@ -26,7 +26,7 @@ export default class RequestSender {
                     };
                 }
                 return {
-                    body: response,
+                    body: response.json(),
                     success: response.ok,
                     errors: {}
                 };
@@ -35,7 +35,7 @@ export default class RequestSender {
 
     checkExpiredJwtAndLogOff(r) {
         if (r.errors && r.errors.ExpiredJwt) {
-            this._storage.removeItem(`${domainPrefix}.auth.lockchain`);
+            this._storage.removeItem(`${domainPrefix}.auth.locktrip`);
             this._storage.removeItem(`${domainPrefix}.auth.username`);
         }
     }

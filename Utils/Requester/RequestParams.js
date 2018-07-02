@@ -13,12 +13,12 @@ export default class RequestParams {
 
     async getAuthHeader() {
         return {
-            'Authorization': await this._storage.getItem(`${domainPrefix}.auth.lockchain`)
+            'Authorization': await this._storage.getItem(`${domainPrefix}.auth.locktrip`)
         }
     }
 
     async getAllHeaders() {
-        return Object.assign(this._headers, await getAuthHeader())
+        return Object.assign(this._headers, await this.getAuthHeader())
     }
 
     async GET() {
