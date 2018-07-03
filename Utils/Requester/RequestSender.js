@@ -22,10 +22,11 @@ export default class RequestSender {
 
         return fetch(endpoint, requestHeaders)
             .then((response) => {
+                console.log(response);
                 if (!response.ok) {
                     return {
                         body: {},
-                        success: !response.ok,
+                        success: response.ok,
                         errors: response.json().then((r) => {
                             this.checkExpiredJwtAndLogOff(r)
                             return r;

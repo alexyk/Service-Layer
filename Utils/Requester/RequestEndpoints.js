@@ -3,6 +3,7 @@ import { apiHost, domainPrefix } from '../config';
 export default class RequestEndpoints {
     constructor() {
         this.routes = {
+            // Neighter parameter nor query
             Register: `${apiHost}users/signup`,
             Login: `${apiHost}login`,
             GetCurrencies: `${apiHost}currencies`,
@@ -24,13 +25,27 @@ export default class RequestEndpoints {
             CreateReservation: `${apiHost}api/hotels/booking`, //testBook
             UpdateUserInfo: `${apiHost}users/me`,
             GetUserInfo: `${apiHost}users/me/info`,
-            GetAllMyListings: `${apiHost}users/me/listings?size=1000000`,
             GetMyJsonFile: `${apiHost}users/me/jsonFile`, // getCurrentlyLoggedUserJsonFile
             GetCountOfMyUnreadMessages: `${apiHost}users/me/messages/count`, // getCountOfUnreadMessages
             ChangeMessageStatus: `${apiHost}users/me/conversations`,
+
+            // Parameter only
             GetListing: `${apiHost}listings/{0}`,
             GetChatMessages: `${apiHost}users/me/conversations/{0}?page={1}`,
-            GetMyConversations: `${apiHost}users/me/conversations`
+            GetListingProgress: `${apiHost}listings/{0}/progress`,
+            GetMyListingById: `${apiHost}me/listings/{0}`,
+            VerifyUserEmail: `${apiHost}airdrop/verifyEmail{0}`,
+            SaveAirdropSocialProfile: `${apiHost}me/social/{0}`,
+            VerifyUserAirdropInfo: `${apiHost}airdrop/participate/{0}`,
+            UpdateListingProgress: `${apiHost}listings/{0}/progress`,
+            ЕditListing: `${apiHost}me/listings/{0}/edit`,
+            DeleteInProgressListing: `${apiHost}listings/{0}/progress`,
+
+            // Query only
+            GetMyConversations: `${apiHost}users/me/conversations`,
+            GetMyListingsInProgress: `${apiHost}users/me/listings/incomplete`
+
+            // Both parameter and query
         }
     }
 
