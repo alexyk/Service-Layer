@@ -12,7 +12,6 @@ export default class RequestEndpoints {
             CreateListingProgress: `${apiHost}listings/progress`,
             GetTopListings: `${apiHost}listings/top`, // getListings
             CreateListing: `${apiHost}listings`,
-            GetLocRate: `https://api.coinmarketcap.com/v1/ticker/lockchain/?convert=EUR`,
             GetAmenitiesByCategory: `${apiHost}categories`,
             GetPropertyTypes: `${apiHost}property_types`,
             GetCurrencyRates: `${apiHost}rates`,
@@ -40,12 +39,36 @@ export default class RequestEndpoints {
             UpdateListingProgress: `${apiHost}listings/{0}/progress`,
             ЕditListing: `${apiHost}me/listings/{0}/edit`,
             DeleteInProgressListing: `${apiHost}listings/{0}/progress`,
+            GetCancellationFees: `${apiHost}api/hotels/booking/{0}/cancellationFee`,
+            CheckIfAirdropUserExists: `${apiHost}userExists/{0}`,
+            CancelTrip: `${apiHost}trips/{0}/cancel`,
+            AcceptReservation: `${apiHost}reservations/{0}/accept`,
+            CancelReservation: `${apiHost}reservations/{0}/cancel`,
+            PublishCalendarSlot: `${apiHost}listings/{0}/calendar`,
+            SendMessage: `${apiHost}users/me/conversations/{0}`,
+            EditDefaultDailyPrice: `${apiHost}listings/{0}/dailyPrice`,
+            GetEmailFreeResponse: `${apiHost}users/email/{0}/`,
+            DeleteListing: `${apiHost}me/listings/{0}/delete`,
+            ContactHost: `${apiHost}listings/{0}/conversations`,
 
             // Query only
             GetMyConversations: `${apiHost}users/me/conversations`,
-            GetMyListingsInProgress: `${apiHost}users/me/listings/incomplete`
+            GetMyListingsInProgress: `${apiHost}users/me/listings/incomplete`,
+            GetMyHotelBookings: `${apiHost}users/me/bookings`,
+            GetRegionsBySearchParameter: `${apiHost}regions/search`,
+            SendRecoveryToken: `${apiHost}users/resetPassword/confirm`,
+            GetMyTrips: `${apiHost}users/me/trips`,
+            GetMyReservations: `${apiHost}users/me/reservations`,
+            GetAllUnpublishedListings: `${apiHost}admin/listings/unpublished`,
+            GetAllPublishedListings: `${apiHost}admin/listings/published`,
+            GetMyListings: `${apiHost}users/me/listings`,
+            GetListingsByFilter: `${apiHost}api/filter_listings`,
+            GetCountries: `${apiHost}countries`,
+            GetCalendarByListingIdAndDateRange: `${apiHost}calendars/search/findAllByListingIdAndDateBetween`,
 
             // Both parameter and query
+            GetHotelRooms: `${apiHost}api/hotels/{0}/rooms`,
+            GetHotelById: `${apiHost}api/hotels/{0}`
         }
     }
 

@@ -22,7 +22,6 @@ export default class RequestSender {
 
         return fetch(endpoint, requestHeaders)
             .then((response) => {
-                console.log(response);
                 if (!response.ok) {
                     return {
                         body: {},
