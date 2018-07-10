@@ -309,7 +309,7 @@ export default class Requester {
 
     getMyReservations(searchTerm, size = 10) {
         return this._requestSender.sendRequest(
-            this._requestEndpoints.GetRoute("GetMyReservations", undefined, searchTerm.concat(["sort=id,desc", `size=${size}`])),
+            this._requestEndpoints.GetRoute("GetMyReservations", undefined, ["sort=id,desc", `size=${size}`].concat(searchTerm)),
             RequestMethods.GET).then(res => res);
     }
 
@@ -431,11 +431,9 @@ export default class Requester {
             RequestMethods.POST, contactHostObj, captchaToken).then(res => res);
     }
 
-    getCalendarByListingIdAndDateRange(listingId, startDate, endDate, toCode = null, page = 0, results = 20) {
-        const startDateParam = `${startDate.getUTCDate()}/${startDate.getUTCMonth() + 1}/${startDate.getUTCFullYear()}`;
-        const endDateParam = `${endDate.getUTCDate()}/${endDate.getUTCMonth() + 1}/${endDate.getUTCFullYear()}`;
+    getCalendarByListingIdAndDateRange(searchTerm) {
         return this._requestSender.sendRequest(
-            this._requestEndpoints.GetRoute("GetCalendarByListingIdAndDateRange", undefined, [`listing=${listingId}`, `startDate=${startDateParam}`, `endDate=${endDateParam}`, `page=${page}`, `size=${results}`, toCode ? `toCode=${toCode}` : '']),
+            this._requestEndpoints.GetRoute("GetCalendarByListingIdAndDateRange", undefined, searchTerm),
             RequestMethods.GET).then(res => res);
     }
 

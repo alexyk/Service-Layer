@@ -50,6 +50,7 @@ export default class RequestEndpoints {
             GetEmailFreeResponse: `${apiHost}users/email/{0}/`,
             DeleteListing: `${apiHost}me/listings/{0}/delete`,
             ContactHost: `${apiHost}listings/{0}/conversations`,
+            GetRegionNameById: `${apiHost}regions/{0}/name`,
 
             // Query only
             GetMyConversations: `${apiHost}users/me/conversations`,
@@ -68,7 +69,8 @@ export default class RequestEndpoints {
 
             // Both parameter and query
             GetHotelRooms: `${apiHost}api/hotels/{0}/rooms`,
-            GetHotelById: `${apiHost}api/hotels/{0}`
+            GetHotelById: `${apiHost}api/hotels/{0}`,
+            GetCities: `${apiHost}countries/{0}/cities`
         }
     }
 
