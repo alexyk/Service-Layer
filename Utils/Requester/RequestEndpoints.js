@@ -51,6 +51,7 @@ export default class RequestEndpoints {
             GetEmailFreeResponse: `${apiHost}users/email/{0}/`,
             DeleteListing: `${apiHost}me/listings/{0}/delete`,
             ContactHost: `${apiHost}listings/{0}/conversations`,
+            GetRegionNameById: `${apiHost}regions/{0}/name`,
 
             // Query only
             GetMyConversations: `${apiHost}users/me/conversations`,
