@@ -10,23 +10,24 @@ export default class RequestEndpoints {
             RequestBooking: `${apiHost}reservations/request`,
             ChangeListingStatus: `${apiHost}admin/listings/state`,
             CreateListingProgress: `${apiHost}listings/progress`,
-            GetTopListings: `${apiHost}listings/top`, // getListings
+            GetTopListings: `${apiHost}listings/top`,
             CreateListing: `${apiHost}listings`,
             GetAmenitiesByCategory: `${apiHost}categories`,
             GetPropertyTypes: `${apiHost}property_types`,
             GetCurrencyRates: `${apiHost}rates`,
             ResendConfirmationEmail: `${apiHost}airdrop/sendVerifyEmailLink`,
             GetUserAirdropInfo: `${apiHost}airdrop`,
-            SendRecoveryEmail: `${apiHost}users/resetPassword/token`, //postRcoveryEmail
-            SendNewPassword: `${apiHost}users/resetPassword/change`, // postNewPassword
+            SendRecoveryEmail: `${apiHost}users/resetPassword/token`,
+            SendNewPassword: `${apiHost}users/resetPassword/change`,
             CancelBooking: `${apiHost}api/hotels/booking/cancel`,
             ConfirmBooking: `${apiHost}api/hotels/booking/confirm`,
-            CreateReservation: `${apiHost}api/hotels/booking`, //testBook
+            CreateReservation: `${apiHost}api/hotels/booking`,
             UpdateUserInfo: `${apiHost}users/me`,
             GetUserInfo: `${apiHost}users/me/info`,
-            GetMyJsonFile: `${apiHost}users/me/jsonFile`, // getCurrentlyLoggedUserJsonFile
-            GetCountOfMyUnreadMessages: `${apiHost}users/me/messages/count`, // getCountOfUnreadMessages
+            GetMyJsonFile: `${apiHost}users/me/jsonFile`,
+            GetCountOfMyUnreadMessages: `${apiHost}users/me/messages/count`,
             ChangeMessageStatus: `${apiHost}users/me/conversations`,
+            EditAirdropVoteUrl: `${apiHost}airdrop/editVoteUrl`,
 
             // Parameter only
             GetListing: `${apiHost}listings/{0}`,
@@ -68,7 +69,8 @@ export default class RequestEndpoints {
 
             // Both parameter and query
             GetHotelRooms: `${apiHost}api/hotels/{0}/rooms`,
-            GetHotelById: `${apiHost}api/hotels/{0}`
+            GetHotelById: `${apiHost}api/hotels/{0}`,
+            GetCities: `${apiHost}countries/{0}/cities`
         }
     }
 
@@ -78,6 +80,7 @@ export default class RequestEndpoints {
      * @param {Array} params 
      * @param {Array} query 
      * @returns {String}
+     * 
      */
     GetRoute(routeName, params, query) {
         let rawRoute = this.routes[routeName];
@@ -97,11 +100,16 @@ export default class RequestEndpoints {
      *
      * @param {Array} query
      * @returns {String}
+     * 
      */
     processQuery(query) {
         // Remove empty, undefined, null and e.g. items from array
-        let filteredQuery = query.filter(function (e) { return e });;
+        let filteredQuery = [];
 
+        if(query != undefined) {
+            filteredQuery = query.filter(function (e) { return e });
+        }
+        
         // Create Key-value pairs
         let queryKvp = '';
         for (let i = 0; i < filteredQuery.length; i++) {
@@ -123,6 +131,7 @@ export default class RequestEndpoints {
      * @param {String} route 
      * @param {Array} params 
      * @returns {String}
+     * 
      */
     replaceParams(route, params) {
         // Count parameters with regex e.g. {param} || {id}
@@ -146,6 +155,7 @@ export default class RequestEndpoints {
      * @param {String} source 
      * @param {Array} params 
      * @returns {String}
+     * 
      */
     format(source, params) {
         // Replace every {0},{1} with passed params

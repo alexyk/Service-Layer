@@ -1,5 +1,5 @@
-import RequestMethods from './RequestMethods';
 import RequestEndpoints from './RequestEndpoints';
+import RequestMethods from './RequestMethods';
 import RequestParams from './RequestParams';
 import { domainPrefix } from '../config';
 
@@ -15,12 +15,19 @@ export default class RequestSender {
      * @param {Enumerator} method 
      * @param {Object} postObj 
      * @param {String} captchaToken
+     * @returns {Object}
+     * 
      */
-    async sendRequest(endpoint, method, postObj = null, captchaToken = null) {
+    async sendRequest(endpoint, method, postObj = null, captchaToken = null, headers = null) {
         const methodRef = this.RequestParams[method].bind(this.RequestParams);
-        let requestHeaders = await methodRef(postObj);
+        let requestHeaders = await methodRef(postObj, captchaToken);
 
-        return fetch(endpoint, requestHeaders)
+        if(headers != null) {
+            delete requestHeaders.headers;
+        }
+        headers = requestHeaders;
+
+        return fetch(endpoint, headers)
             .then((response) => {
                 if (!response.ok) {
                     return {
