@@ -807,4 +807,54 @@ export default class Requester {
             this._requestEndpoints.GetRoute("GetUserAirdropInfo"),
             RequestMethods.GET).then(res => res);
     }
+
+    /**
+     * 
+     * @param {String} searchTerm 
+     * @returns {Promise}
+     * 
+     */
+    getMapInfo(searchTerm) {
+        return this._requestSender.sendRequest(
+            this._requestEndpoints.GetRoute("GetMapInfo", [searchTerm]),
+            RequestMethods.GET).then(res => res);
+    }
+
+    /**
+     * 
+     * @param {String} searchTerm 
+     * @param {String} filters 
+     * @returns {Promise}
+     * 
+     */
+    getStaticHotelsByFilter(searchTerm, filters) {
+        return this._requestSender.sendRequest(
+            this._requestEndpoints.GetRoute("GetStaticHotelsByFilter", [searchTerm, filters]),
+            RequestMethods.GET).then(res => res);
+    }
+
+    /**
+     * 
+     * @param {Number} regionId 
+     * @param {Number} page 
+     * @returns {Promise}
+     * 
+     */
+    getStaticHotels(regionId, page = 0) {
+        return this._requestSender.sendRequest(
+            this._requestEndpoints.GetRoute("GetStaticHotels", [regionId], [`page=${page}`]),
+            RequestMethods.GET).then(res => res);
+    }
+
+    /**
+     * 
+     * @param {Number} id 
+     * @returns {Promise}
+     * 
+     */
+    getHotelBookingDetails(id) {
+        return this._requestSender.sendRequest(
+            this._requestEndpoints.GetRoute("GetHotelBookingDetails", [id]),
+            RequestMethods.GET).then(res => res);
+    }
 }
