@@ -4,9 +4,9 @@ import RequestParams from './RequestParams';
 import RequestSender from './RequestSender';
 
 export default class Requester {
-    constructor(storage) {
-        this._requestSender = new RequestSender(storage);
-        this._requestEndpoints = new RequestEndpoints();
+    constructor(storage, config, headers = {}) {
+        this._requestSender = new RequestSender(storage, config, headers);
+        this._requestEndpoints = new RequestEndpoints(config);
     }
 
     /**

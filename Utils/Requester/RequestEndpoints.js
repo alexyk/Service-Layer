@@ -1,7 +1,6 @@
-import { apiHost, domainPrefix } from '../config';
-
 export default class RequestEndpoints {
-    constructor() {
+    constructor(config) {
+        const { apiHost } = config;
         this.routes = {
             // Neighter parameter nor query
             Register: `${apiHost}users/signup`,

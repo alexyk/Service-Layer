@@ -1,9 +1,7 @@
-import { domainPrefix } from '../config';
-
 export default class RequestParams {
-    constructor(storage, headers = {}) {
+    constructor(storage, config, headers = {}) {
         this._storage = storage;
-
+        this.config = config;
 
         this._headers = Object.assign(headers, {
             'Accept': 'application/json',
@@ -26,7 +24,7 @@ export default class RequestParams {
      * 
      */
     async getAuthHeader() {
-        const authorization = await this._storage.getItem(`${domainPrefix}.auth.locktrip`);
+        const authorization = await this._storage.getItem(`${this.config.domainPrefix}.auth.locktrip`);
         return authorization ? { 'Authorization': authorization } : {};
     }
 

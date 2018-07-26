@@ -1,12 +1,12 @@
 import RequestEndpoints from './RequestEndpoints';
 import RequestMethods from './RequestMethods';
 import RequestParams from './RequestParams';
-import { domainPrefix } from '../config';
 
 export default class RequestSender {
-    constructor(storage, headers = {}) {
+    constructor(storage, config, headers = {}) {
         this._storage = storage;
-		this.RequestParams = new RequestParams(storage, headers);
+        this.config = config;
+		this.RequestParams = new RequestParams(storage, config, headers);
     }
 
     /**
@@ -49,8 +49,8 @@ export default class RequestSender {
 
     checkExpiredJwtAndLogOff(r) {
         if (r.errors && r.errors.ExpiredJwt) {
-            this._storage.removeItem(`${domainPrefix}.auth.locktrip`);
-            this._storage.removeItem(`${domainPrefix}.auth.username`);
+            this._storage.removeItem(`${this.config.domainPrefix}.auth.locktrip`);
+            this._storage.removeItem(`${this.config.domainPrefix}.auth.username`);
         }
     }
 }
