@@ -55,6 +55,7 @@ export default class RequestEndpoints {
             GetStaticHotelsByFilter: `${apiHost}api/hotels/filtered{0}{1}`,
             GetStaticHotels: `${apiHost}regions/{0}`,
             GetHotelBookingDetails: `${apiHost}users/me/bookings/{0}`,
+            GetExternalCampaignBalance: `${apiHost}airdrop/campaigns/balance`,
 
             // Query only
             GetMyConversations: `${apiHost}users/me/conversations`,

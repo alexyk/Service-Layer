@@ -857,4 +857,16 @@ export default class Requester {
             this._requestEndpoints.GetRoute("GetHotelBookingDetails", [id]),
             RequestMethods.GET).then(res => res);
     }
+
+    /**
+     * 
+     * @param {String} email 
+     * @returns {Promise}
+     * 
+     */
+    getExternalCampaignBalance(email) {
+      return this._requestSender.sendRequest(
+          this._requestEndpoints.GetRoute("GetExternalCampaignBalance", [email]),
+          RequestMethods.POST).then(res => res);
+  }
 }
