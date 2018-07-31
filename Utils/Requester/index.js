@@ -866,7 +866,7 @@ export default class Requester {
      */
     getExternalCampaignBalance(email) {
       return this._requestSender.sendRequest(
-          this._requestEndpoints.GetRoute("GetExternalCampaignBalance", [email]),
-          RequestMethods.POST).then(res => res);
+          this._requestEndpoints.GetRoute("GetExternalCampaignBalance"),
+          RequestMethods.POST, email).then(res => res);
   }
 }
