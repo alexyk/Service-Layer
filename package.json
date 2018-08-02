@@ -1,15 +1,19 @@
 {
-  "name": "test-locktrip-service-layer",
+  "name": "locktrip-service-layer",
   "version": "1.0.5",
-  "main": "Utils/Requester/index.js",
+  "main": "lib/requester/index.js",
   "scripts": {
-    "ES6-to-ES5": "npx babel Utils --watch --presets babel-preset-env --out-dir Production"
+    "ES6-to-ES5": "npx babel src --presets babel-preset-env --out-dir lib",
+    "update-version": "npm version minor",
+    "publish": "npm publish",
+    "deploy": "npm-run-all ES6-to-ES5 update-version publish"
   },
   "presets": [
     "env"
   ],
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "npm-run-all": "^4.1.3"
   }
 }
