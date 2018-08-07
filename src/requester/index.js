@@ -574,6 +574,30 @@ export default class Requester {
    * @returns {Promise}
    * 
    */
+  getAllVerifiedUsers(searchTerm) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetAllVerifiedUsers", undefined, searchTerm),
+      RequestMethods.GET).then(res => res);
+  }
+
+  /**
+   * 
+   * @param {Array} searchTerm 
+   * @returns {Promise}
+   * 
+   */
+  getAllUnverifiedUsers(searchTerm) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetAllUnverifiedUsers", undefined, searchTerm),
+      RequestMethods.GET).then(res => res);
+  }
+
+  /**
+   * 
+   * @param {Array} searchTerm 
+   * @returns {Promise}
+   * 
+   */
   getMyListings(searchTerm) {
     return this._requestSender.sendRequest(
       this._requestEndpoints.GetRoute("GetMyListings", undefined, searchTerm),
@@ -869,4 +893,6 @@ export default class Requester {
       this._requestEndpoints.GetRoute("GetExternalCampaignBalance"),
       RequestMethods.POST, email).then(res => res);
   }
+
+  
 }

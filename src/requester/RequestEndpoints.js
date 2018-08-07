@@ -71,6 +71,8 @@ export default class RequestEndpoints {
       GetListingsByFilter: `${apiHost}api/filter_listings`,
       GetCountries: `${apiHost}countries`,
       GetCalendarByListingIdAndDateRange: `${apiHost}calendars/search/findAllByListingIdAndDateBetween`,
+      GetAllUnverifiedUsers: `${apiHost}admin/users/unverified`,
+      GetAllVerifiedUsers: `${apiHost}admin/users/verified`,
 
       // Both parameter and query
       GetHotelRooms: `${apiHost}api/hotels/{0}/rooms`,
