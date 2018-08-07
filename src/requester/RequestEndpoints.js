@@ -8,6 +8,7 @@ export default class RequestEndpoints {
       GetCurrencies: `${apiHost}currencies`,
       RequestBooking: `${apiHost}reservations/request`,
       ChangeListingStatus: `${apiHost}admin/listings/state`,
+      ChangeUserStatus: `${apiHost}admin/users/verify`,
       CreateListingProgress: `${apiHost}listings/progress`,
       GetTopListings: `${apiHost}listings/top`,
       CreateListing: `${apiHost}listings`,

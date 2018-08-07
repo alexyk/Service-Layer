@@ -115,6 +115,18 @@ export default class Requester {
   /**
    * 
    * @param {Object} listingObj 
+   * @returns {Promise}
+   * 
+   */
+  changeUserStatus(userObj) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("ChangeUserStatus"),
+      RequestMethods.POST, userObj).then(res => res);
+  }
+
+  /**
+   * 
+   * @param {Object} listingObj 
    * @param {String} captchaToken 
    * @returns {Promise}
    * 
