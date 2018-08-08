@@ -28,6 +28,7 @@ export default class RequestEndpoints {
       GetCountOfMyUnreadMessages: `${apiHost}users/me/messages/count`,
       ChangeMessageStatus: `${apiHost}users/me/conversations`,
       EditAirdropVoteUrl: `${apiHost}airdrop/editVoteUrl`,
+      UpdateUserAdditionalInfo: `${apiHost}users/me/identity`,
 
       // Parameter only
       GetListing: `${apiHost}listings/{0}`,

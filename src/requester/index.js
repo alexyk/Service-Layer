@@ -906,5 +906,9 @@ export default class Requester {
       RequestMethods.POST, email).then(res => res);
   }
 
-  
+  updateUserAdditionalInfo(userAdditionalInfoObj, captchaToken) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("UpdateUserAdditionalInfo"),
+      RequestMethods.POST, userAdditionalInfoObj).then(res => res);
+  }
 }
