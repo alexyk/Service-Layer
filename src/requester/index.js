@@ -914,6 +914,7 @@ export default class Requester {
 
   /**
    * 
+   * @param {Object} paymentInfo
    * @returns {Promise}
    * 
    */
@@ -921,5 +922,17 @@ export default class Requester {
     return this._requestSender.sendRequest(
       this._requestEndpoints.GetRoute("VerifyCreditCardPayment"),
       RequestMethods.POST, paymentInfo).then(res => res);
+  }
+
+  /**
+   * 
+   * @param {String} url
+   * @returns {Promise}
+   * 
+   */
+  payWithCreditCard(url) {
+    return this._requestSender.sendRequest(
+      url,
+      RequestMethods.GET).then(res => res);
   }
 }
