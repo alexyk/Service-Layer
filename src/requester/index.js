@@ -935,4 +935,15 @@ export default class Requester {
       url,
       RequestMethods.GET).then(res => res);
   }
+
+  /**
+   * 
+   * @returns {Promise}
+   * 
+   */
+  getCurrentLocEurRate() {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetCurrentLocEurRate"),
+      RequestMethods.GET).then(res => res);
+  }
 }
