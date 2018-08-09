@@ -938,6 +938,7 @@ export default class Requester {
 
   /**
    * 
+   * @param {String} url
    * @returns {Promise}
    * 
    */
