@@ -941,9 +941,9 @@ export default class Requester {
    * @returns {Promise}
    * 
    */
-  getCurrentLocEurRate() {
+  getCurrentLocEurRate(url) {
     return this._requestSender.sendRequest(
-      this._requestEndpoints.GetRoute("GetCurrentLocEurRate"),
+      url,
       RequestMethods.GET).then(res => res);
   }
 }
