@@ -911,4 +911,15 @@ export default class Requester {
       this._requestEndpoints.GetRoute("UpdateUserAdditionalInfo"),
       RequestMethods.POST, userAdditionalInfoObj).then(res => res);
   }
+
+  /**
+   * 
+   * @returns {Promise}
+   * 
+   */
+  verifyCreditCardPayment(paymentInfo) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("VerifyCreditCardPayment"),
+      RequestMethods.POST, paymentInfo).then(res => res);
+  }
 }

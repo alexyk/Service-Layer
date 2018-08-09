@@ -29,6 +29,7 @@ export default class RequestEndpoints {
       ChangeMessageStatus: `${apiHost}users/me/conversations`,
       EditAirdropVoteUrl: `${apiHost}airdrop/editVoteUrl`,
       UpdateUserAdditionalInfo: `${apiHost}users/me/identity`,
+      VerifyCreditCardPayment: `${apiHost}payment/creditcard`,
 
       // Parameter only
       GetListing: `${apiHost}listings/{0}`,
