@@ -1,6 +1,6 @@
 {
   "name": "locktrip-service-layer",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "main": "lib/requester/index.js",
   "scripts": {
     "ES6-to-ES5": "npx babel src --presets babel-preset-env --out-dir lib",
