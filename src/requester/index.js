@@ -914,13 +914,14 @@ export default class Requester {
 
   /**
    * 
+   * @param {String} url
    * @param {Object} paymentInfo
    * @returns {Promise}
    * 
    */
-  verifyCreditCardPayment(paymentInfo) {
+  verifyCreditCardPayment(url, paymentInfo) {
     return this._requestSender.sendRequest(
-      this._requestEndpoints.GetRoute("VerifyCreditCardPayment"),
+      url,
       RequestMethods.POST, paymentInfo).then(res => res);
   }
 
