@@ -526,7 +526,7 @@ export default class Requester {
    */
   publishCalendarSlot(listingId, slotObj, captchaToken) {
     return this._requestSender.sendRequest(
-      this._requestEndpoints.GetRoute("PublishCalendarSlot", [id]),
+      this._requestEndpoints.GetRoute("PublishCalendarSlot", [listingId]),
       RequestMethods.POST, slotObj, captchaToken).then(res => res);
   }
 
