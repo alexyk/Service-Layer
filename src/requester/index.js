@@ -909,7 +909,7 @@ export default class Requester {
   updateUserAdditionalInfo(userAdditionalInfoObj, captchaToken) {
     return this._requestSender.sendRequest(
       this._requestEndpoints.GetRoute("UpdateUserAdditionalInfo"),
-      RequestMethods.POST, userAdditionalInfoObj).then(res => res);
+      RequestMethods.POST, userAdditionalInfoObj, captchaToken).then(res => res);
   }
 
   /**
