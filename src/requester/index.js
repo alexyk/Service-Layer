@@ -668,6 +668,18 @@ export default class Requester {
 
   /**
    * 
+   * @param {Number} countryId
+   * @returns {Promise}
+   * 
+   */
+  getStates(countryId) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetStates", [countryId], ['sort=name,asc']),
+      RequestMethods.GET).then(res => res);
+  }
+
+  /**
+   * 
    * @param {Number} countryId 
    * @param {Boolean} hasListings 
    * @returns {Promise}

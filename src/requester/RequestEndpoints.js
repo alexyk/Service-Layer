@@ -80,7 +80,8 @@ export default class RequestEndpoints {
       // Both parameter and query
       GetHotelRooms: `${apiHost}api/hotels/{0}/rooms`,
       GetHotelById: `${apiHost}api/hotels/{0}`,
-      GetCities: `${apiHost}countries/{0}/cities`
+      GetCities: `${apiHost}countries/{0}/cities`,
+      GetStates: `${apiHost}countries/{0}/states`
     }
   }
 
