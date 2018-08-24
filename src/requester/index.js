@@ -947,4 +947,16 @@ export default class Requester {
       url,
       RequestMethods.GET).then(res => res);
   }
+
+  /**
+   * 
+   * @param {String} url
+   * @returns {Promise}
+   * 
+   */
+  payWithCreditCard(url) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetTopHotels"),
+      RequestMethods.GET).then(res => res);
+  }
 }
