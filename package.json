@@ -5,8 +5,8 @@
   "scripts": {
     "ES6-to-ES5": "npx babel src --presets babel-preset-env --out-dir lib",
     "update-version": "npm version patch",
-    "publish": "npm publish",
-    "deploy": "npm-run-all ES6-to-ES5 update-version publish"
+    "publish-version": "npm publish",
+    "deploy": "npm-run-all ES6-to-ES5 update-version publish-version"
   },
   "presets": [
     "env"
