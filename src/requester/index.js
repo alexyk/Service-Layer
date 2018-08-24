@@ -526,7 +526,7 @@ export default class Requester {
    */
   publishCalendarSlot(listingId, slotObj, captchaToken) {
     return this._requestSender.sendRequest(
-      this._requestEndpoints.GetRoute("PublishCalendarSlot", [id]),
+      this._requestEndpoints.GetRoute("PublishCalendarSlot", [listingId]),
       RequestMethods.POST, slotObj, captchaToken).then(res => res);
   }
 
@@ -663,6 +663,18 @@ export default class Requester {
   getCountries(hasListings = false) {
     return this._requestSender.sendRequest(
       this._requestEndpoints.GetRoute("GetCountries", undefined, hasListings ? ['hasListings=true', 'size=10000', 'sort=name,asc'] : ['size=10000', 'sort=name,asc']),
+      RequestMethods.GET).then(res => res);
+  }
+
+  /**
+   * 
+   * @param {Number} countryId
+   * @returns {Promise}
+   * 
+   */
+  getStates(countryId) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetStates", [countryId], ['sort=name,asc']),
       RequestMethods.GET).then(res => res);
   }
 
@@ -909,7 +921,7 @@ export default class Requester {
   updateUserAdditionalInfo(userAdditionalInfoObj, captchaToken) {
     return this._requestSender.sendRequest(
       this._requestEndpoints.GetRoute("UpdateUserAdditionalInfo"),
-      RequestMethods.POST, userAdditionalInfoObj).then(res => res);
+      RequestMethods.POST, userAdditionalInfoObj, captchaToken).then(res => res);
   }
 
   /**
@@ -949,12 +961,34 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {String} url
+   * @param {Object} emailVerificationRedirectURL
    * @returns {Promise}
    * 
    */
-  payWithCreditCard(url) {
+  sendVerificationEmail(emailVerificationRedirectURL) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("SendVerificationEmail"),
+      RequestMethods.POST, emailVerificationRedirectURL).then(res => res);
+  }
+
+  /**
+   * 
+   * @param {Object} emailVerificationSecurityCode
+   * @returns {Promise}
+   * 
+   */
+  verifyEmailSecurityCode(emailVerificationSecurityCode) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("VerifyEmailSecurityCode"),
+      RequestMethods.POST, emailVerificationSecurityCode).then(res => res);
+  }
+
+  /**
+   *
+   * @returns {Promise}
+   * 
+   */
+  getTopHotels() {
     return this._requestSender.sendRequest(
       this._requestEndpoints.GetRoute("GetTopHotels"),
       RequestMethods.GET).then(res => res);

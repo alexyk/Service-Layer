@@ -31,6 +31,8 @@ export default class RequestEndpoints {
       UpdateUserAdditionalInfo: `${apiHost}users/me/identity`,
       VerifyCreditCardPayment: `${apiHost}payment/creditcard`,
       GetTopHotels: `${apiHost}api/hotels/top`,
+      SendVerificationEmail: `${apiHost}users/me/sendEmailVerification`,
+      VerifyEmailSecurityCode: `${apiHost}users/me/checkingEmailVerificationSecurityCode`,
 
       // Parameter only
       GetListing: `${apiHost}listings/{0}`,
@@ -81,7 +83,8 @@ export default class RequestEndpoints {
       // Both parameter and query
       GetHotelRooms: `${apiHost}api/hotels/{0}/rooms`,
       GetHotelById: `${apiHost}api/hotels/{0}`,
-      GetCities: `${apiHost}countries/{0}/cities`
+      GetCities: `${apiHost}countries/{0}/cities`,
+      GetStates: `${apiHost}countries/{0}/states`
     }
   }
 
