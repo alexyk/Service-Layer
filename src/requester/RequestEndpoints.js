@@ -30,6 +30,8 @@ export default class RequestEndpoints {
       EditAirdropVoteUrl: `${apiHost}airdrop/editVoteUrl`,
       UpdateUserAdditionalInfo: `${apiHost}users/me/identity`,
       VerifyCreditCardPayment: `${apiHost}payment/creditcard`,
+      SendVerificationEmail: `${apiHost}users/me/sendEmailVerification`,
+      VerifyEmailSecurityCode: `${apiHost}users/me/checkingEmailVerificationSecurityCode`,
 
       // Parameter only
       GetListing: `${apiHost}listings/{0}`,

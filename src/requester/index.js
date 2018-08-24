@@ -959,4 +959,28 @@ export default class Requester {
       url,
       RequestMethods.GET).then(res => res);
   }
+
+  /**
+   * 
+   * @param {Object} emailVerificationRedirectURL
+   * @returns {Promise}
+   * 
+   */
+  sendVerificationEmail(emailVerificationRedirectURL) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("SendVerificationEmail"),
+      RequestMethods.POST, emailVerificationRedirectURL).then(res => res);
+  }
+
+    /**
+   * 
+   * @param {Object} emailVerificationSecurityCode
+   * @returns {Promise}
+   * 
+   */
+  verifyEmailSecurityCode(emailVerificationSecurityCode) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("VerifyEmailSecurityCode"),
+      RequestMethods.POST, emailVerificationSecurityCode).then(res => res);
+  }
 }
