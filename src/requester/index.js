@@ -961,7 +961,6 @@ export default class Requester {
   }
 
   /**
-   * 
    * @param {Object} emailVerificationRedirectURL
    * @returns {Promise}
    * 
@@ -972,7 +971,7 @@ export default class Requester {
       RequestMethods.POST, emailVerificationRedirectURL).then(res => res);
   }
 
-    /**
+  /**
    * 
    * @param {Object} emailVerificationSecurityCode
    * @returns {Promise}
@@ -982,5 +981,16 @@ export default class Requester {
     return this._requestSender.sendRequest(
       this._requestEndpoints.GetRoute("VerifyEmailSecurityCode"),
       RequestMethods.POST, emailVerificationSecurityCode).then(res => res);
+  }
+
+  /**
+   *
+   * @returns {Promise}
+   * 
+   */
+  getTopHotels() {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetTopHotels"),
+      RequestMethods.GET).then(res => res);
   }
 }
