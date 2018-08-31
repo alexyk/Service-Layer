@@ -321,6 +321,18 @@ export default class Requester {
 
   /**
    * 
+   * @param {Number} id
+   * @returns {Promise}
+   *  
+   */
+  getHotelPictures(id) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetHotelPictures", [id]),
+      RequestMethods.GET).then(res => res);
+  }
+
+  /**
+   * 
    * @param {Array} searchTerm 
    * @returns {Promise}
    * 
