@@ -64,6 +64,7 @@ export default class RequestEndpoints {
       GetExternalCampaignBalance: `${apiHost}airdrop/campaigns/balance`,
       EditListing: `${apiHost}me/listings/{0}/edit`,
       GetHotelPictures: `${apiHost}api/hotels/{0}/thumbnails`,
+      GetHomeBookingDetails: `${apiHost}listings/rooms/{0}`,
 
       // Query only
       GetMyConversations: `${apiHost}users/me/conversations`,
