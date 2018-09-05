@@ -993,4 +993,15 @@ export default class Requester {
       this._requestEndpoints.GetRoute("GetTopHotels"),
       RequestMethods.GET).then(res => res);
   }
+
+  /**
+   *
+   * @returns {Promise}
+   * 
+   */
+  getHomeBookingDetails(id) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetHomeBookingDetails", [id]),
+      RequestMethods.GET).then(res => res);
+  }
 }

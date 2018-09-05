@@ -63,6 +63,7 @@ export default class RequestEndpoints {
       GetHotelBookingDetails: `${apiHost}users/me/bookings/{0}`,
       GetExternalCampaignBalance: `${apiHost}airdrop/campaigns/balance`,
       EditListing: `${apiHost}me/listings/{0}/edit`,
+      GetHomeBookingDetails: `${apiHost}listings/rooms/{0}`,
 
       // Query only
       GetMyConversations: `${apiHost}users/me/conversations`,
