@@ -887,9 +887,9 @@ export default class Requester {
    * @returns {Promise}
    * 
    */
-  getStaticHotelsByFilter(searchTerm, filters) {
+  getLastSearchHotelResultsByFilter(searchTerm, filters) {
     return this._requestSender.sendRequest(
-      this._requestEndpoints.GetRoute("GetStaticHotelsByFilter", [searchTerm, filters]),
+      this._requestEndpoints.GetRoute("GetLastSearchHotelResultsByFilter", [searchTerm, filters]),
       RequestMethods.GET).then(res => res);
   }
 
