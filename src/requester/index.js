@@ -1016,4 +1016,28 @@ export default class Requester {
       this._requestEndpoints.GetRoute("GetHomeBookingDetails", [id]),
       RequestMethods.GET).then(res => res);
   }
+
+  /**
+   *
+   * @returns {Promise}
+   * 
+   */
+  getQuoteIdExpirationFlag(id) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetQuoteIdExpirationFlag", [id]),
+      RequestMethods.GET).then(res => res);
+  }
+
+  /**
+   * 
+   * @param {Number} id
+   * @param {Object} quoteIdObj
+   * @returns {Promise}
+   * 
+   */
+  markQuoteIdAsLocked(id, quoteIdObj) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("MarkQuoteIdAsLocked", [id]),
+      RequestMethods.POST, quoteIdObj).then(res => res);
+  }
 }

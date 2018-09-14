@@ -65,6 +65,8 @@ export default class RequestEndpoints {
       EditListing: `${apiHost}me/listings/{0}/edit`,
       GetHotelPictures: `${apiHost}api/hotels/{0}/thumbnails`,
       GetHomeBookingDetails: `${apiHost}listings/rooms/{0}`,
+      GetQuoteIdExpirationFlag: `${apiHost}api/hotels/rooms/{0}/valid`,
+      MarkQuoteIdAsLocked: `${apiHost}api/hotels/rooms/{0}/mark`,
 
       // Query only
       GetMyConversations: `${apiHost}users/me/conversations`,
