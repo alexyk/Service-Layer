@@ -841,7 +841,7 @@ export default class Requester {
    */
   contactHost(id, contactHostObj, captchaToken) {
     return this._requestSender.sendRequest(
-      this._requestEndpoints.GetRoute("ContactHost"),
+      this._requestEndpoints.GetRoute("ContactHost", [id]),
       RequestMethods.POST, contactHostObj, captchaToken).then(res => res);
   }
 
