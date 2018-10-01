@@ -1043,12 +1043,11 @@ export default class Requester {
   
   /**
    * 
-   * @param {Number} id
-   * @param {Object} quoteIdObj
+   * @param {Object} booking
    * @returns {Promise}
    * 
    */
-  markQuoteIdAsLocked(booking) {
+  quoteBooking(booking) {
     return this._requestSender.sendRequest(
       this._requestEndpoints.GetRoute("QuoteBooking"),
       RequestMethods.POST, booking).then(res => res);
