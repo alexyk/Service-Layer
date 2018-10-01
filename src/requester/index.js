@@ -1040,4 +1040,17 @@ export default class Requester {
       this._requestEndpoints.GetRoute("MarkQuoteIdAsLocked", [id]),
       RequestMethods.POST, quoteIdObj).then(res => res);
   }
+  
+  /**
+   * 
+   * @param {Number} id
+   * @param {Object} quoteIdObj
+   * @returns {Promise}
+   * 
+   */
+  markQuoteIdAsLocked(booking) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("QuoteBooking"),
+      RequestMethods.POST, booking).then(res => res);
+  }
 }

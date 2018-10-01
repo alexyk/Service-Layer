@@ -33,6 +33,7 @@ export default class RequestEndpoints {
       GetTopHotels: `${apiHost}api/hotels/top`,
       SendVerificationEmail: `${apiHost}users/me/sendEmailVerification`,
       VerifyEmailSecurityCode: `${apiHost}users/me/checkingEmailVerificationSecurityCode`,
+      QuoteBooking: `${apiHost}api/hotels/booking/quote`,
 
       // Parameter only
       GetListing: `${apiHost}listings/{0}`,
