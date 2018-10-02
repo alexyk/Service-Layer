@@ -1052,4 +1052,37 @@ export default class Requester {
       this._requestEndpoints.GetRoute("QuoteBooking"),
       RequestMethods.POST, booking).then(res => res);
   }
+
+  /**
+   * 
+   * @returns {Promise}
+   * 
+   */
+  withdrawTokensFromAirdrop() {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("WithdrawTokensFromAirdrop"),
+      RequestMethods.POST).then(res => res);
+  }
+
+  /**
+   * 
+   * @returns {Promise}
+   * 
+   */
+  checkIfAirdropUserIsVerified() {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("CheckIfAirdropUserIsVerified"),
+      RequestMethods.GET).then(res => res);
+  }
+
+  /**
+   * 
+   * @returns {Promise}
+   * 
+   */
+  checkIfAirdropWithdrawHasStarted() {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("CheckIfAirdropWithdrawHasStarted"),
+      RequestMethods.GET).then(res => res);
+  }
 }

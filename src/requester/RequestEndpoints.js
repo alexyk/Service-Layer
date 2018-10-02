@@ -34,6 +34,9 @@ export default class RequestEndpoints {
       SendVerificationEmail: `${apiHost}users/me/sendEmailVerification`,
       VerifyEmailSecurityCode: `${apiHost}users/me/checkingEmailVerificationSecurityCode`,
       QuoteBooking: `${apiHost}api/hotels/booking/quote`,
+      WithdrawTokensFromAirdrop: `${apiHost}/airdrop/withdraw`,
+      CheckIfAirdropUserIsVerified: `${apiHost}/airdrop/verified`,
+      CheckIfAirdropWithdrawHasStarted: `${apiHost}/airdrop/withdraw/started`,
 
       // Parameter only
       GetListing: `${apiHost}listings/{0}`,
