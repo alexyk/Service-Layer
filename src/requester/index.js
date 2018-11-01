@@ -1085,4 +1085,50 @@ export default class Requester {
       this._requestEndpoints.GetRoute("CheckIfAirdropWithdrawHasStarted"),
       RequestMethods.GET).then(res => res);
   }
+
+  /**
+   * 
+   * @returns {Promise}
+   * 
+   */
+  getAirdropLocRate() {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetAirdropLocRate"),
+      RequestMethods.GET).then(res => res);
+  }
+
+  /**
+   * 
+   * @param {Object} locRate
+   * @returns {Promise}
+   * 
+   */
+  updateAirdropLocRate(locRate) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("UpdateAirdropLocRate"),
+      RequestMethods.POST, locRate).then(res => res);
+  }
+
+  /**
+   * 
+   * @returns {Promise}
+   * 
+   */
+  getConfigVars() {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetConfigVars"),
+      RequestMethods.GET).then(res => res);
+  }
+
+  /**
+   * 
+   * @param {Array} configVars
+   * @returns {Promise}
+   * 
+   */
+  updateConfigVars(configVars) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("UpdateConfigVars"),
+      RequestMethods.POST, configVars).then(res => res);
+  }
 }

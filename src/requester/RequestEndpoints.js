@@ -37,6 +37,10 @@ export default class RequestEndpoints {
       WithdrawTokensFromAirdrop: `${apiHost}/airdrop/withdraw`,
       CheckIfAirdropUserIsVerified: `${apiHost}/airdrop/verified`,
       CheckIfAirdropWithdrawHasStarted: `${apiHost}/airdrop/withdraw/started`,
+      GetAirdropLocRate: `${apiHost}/admin/loc/rate`,
+      UpdateAirdropLocRate: `${apiHost}/admin/loc/rate`,
+      GetConfigVars: `${apiHost}/admin/configVars`,
+      UpdateConfigVars: `${apiHost}/admin/configVars/changing`,
 
       // Parameter only
       GetListing: `${apiHost}listings/{0}`,
