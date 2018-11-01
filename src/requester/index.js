@@ -1120,6 +1120,18 @@ export default class Requester {
       RequestMethods.GET).then(res => res);
   }
 
+   /**
+   * 
+   * @param {String} variable
+   * @returns {Promise}
+   * 
+   */
+  getConfigVarByName(variable) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetConfigVarByName", [variable]),
+      RequestMethods.GET).then(res => res);
+  }
+
   /**
    * 
    * @param {Array} configVars
