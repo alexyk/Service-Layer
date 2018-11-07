@@ -76,6 +76,7 @@ export default class RequestEndpoints {
       GetQuoteIdExpirationFlag: `${apiHost}api/hotels/rooms/{0}/valid`,
       MarkQuoteIdAsLocked: `${apiHost}api/hotels/rooms/{0}/mark`,
       GetConfigVarByName: `${apiHost}/application/config/{0}`,
+      GetUserHasPendingBooking: `${apiHost}api/hotels/booking/pending`,
 
       // Query only
       GetMyConversations: `${apiHost}users/me/conversations`,

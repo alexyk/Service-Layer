@@ -1040,7 +1040,7 @@ export default class Requester {
       this._requestEndpoints.GetRoute("MarkQuoteIdAsLocked", [id]),
       RequestMethods.POST, quoteIdObj).then(res => res);
   }
-  
+
   /**
    * 
    * @param {Object} booking
@@ -1120,12 +1120,12 @@ export default class Requester {
       RequestMethods.GET).then(res => res);
   }
 
-   /**
-   * 
-   * @param {String} variable
-   * @returns {Promise}
-   * 
-   */
+  /**
+  * 
+  * @param {String} variable
+  * @returns {Promise}
+  * 
+  */
   getConfigVarByName(variable) {
     return this._requestSender.sendRequest(
       this._requestEndpoints.GetRoute("GetConfigVarByName", [variable]),
@@ -1142,5 +1142,16 @@ export default class Requester {
     return this._requestSender.sendRequest(
       this._requestEndpoints.GetRoute("UpdateConfigVars"),
       RequestMethods.POST, configVars).then(res => res);
+  }
+
+  /**
+   *
+   * @returns {Promise}
+   * 
+   */
+  getUserHasPendingBooking() {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetUserHasPendingBooking"),
+      RequestMethods.GET).then(res => res);
   }
 }
