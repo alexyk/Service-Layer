@@ -35,7 +35,7 @@ export default class Requester {
       this._requestEndpoints.GetRoute("Login"),
       RequestMethods.POST,
       userObj,
-      null,
+      captchaToken,
       {}).then(res => res);
   }
 
