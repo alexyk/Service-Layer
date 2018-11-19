@@ -1170,13 +1170,14 @@ export default class Requester {
 
   /**
    * 
+   * @param {String} id
    * @param {Object} booking
    * @returns {Promise}
    * 
    */
-  updateBookingWithTransaction(booking) {
+  updateBookingWithTransaction(id, booking) {
     return this._requestSender.sendRequest(
-      this._requestEndpoints.GetRoute("UpdateBookingWithTransaction"),
+      this._requestEndpoints.GetRoute("UpdateBookingWithTransaction", [id]),
       RequestMethods.POST, booking).then(res => res);
   }
 
