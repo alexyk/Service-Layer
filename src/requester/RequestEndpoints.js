@@ -78,6 +78,7 @@ export default class RequestEndpoints {
       GetConfigVarByName: `${apiHost}application/config/{0}`,
       GetBookingWithTransactionHashById: `${apiHost}admin/panel/booking/{0}`,
       UpdateBookingWithTransaction: `${apiHost}admin/panel/booking/{0}`,
+      GetUserHasPendingBooking: `${apiHost}api/hotels/booking/pending`,
 
       // Query only
       GetMyConversations: `${apiHost}users/me/conversations`,
