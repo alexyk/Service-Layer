@@ -1143,4 +1143,40 @@ export default class Requester {
       this._requestEndpoints.GetRoute("UpdateConfigVars"),
       RequestMethods.POST, configVars).then(res => res);
   }
+
+  /**
+   * 
+   * @param {Array} searchTerm 
+   * @returns {Promise}
+   * 
+   */
+  getAllBookingsWithTransactionHash(searchTerm) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetAllBookingsWithTransactionHash", undefined, searchTerm),
+      RequestMethods.GET).then(res => res);
+  }
+
+  /**
+   * 
+   * @param {String} id
+   * @returns {Promise}
+   * 
+   */
+  getBookingWithTransactionHashById(id) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetBookingWithTransactionHashById", [id]),
+      RequestMethods.GET).then(res => res);
+  }
+
+  /**
+   * 
+   * @param {Object} booking
+   * @returns {Promise}
+   * 
+   */
+  updateBookingWithTransaction(booking) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("UpdateBookingWithTransaction"),
+      RequestMethods.POST, booking).then(res => res);
+  }
 }
