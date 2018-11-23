@@ -26,7 +26,8 @@ export default class Requester {
 
   /**
    * 
-   * @param {Object} userObj 
+   * @param {Object} userObj
+   * @param {String} captchaToken 
    * @returns {Promise}
    * 
    */
