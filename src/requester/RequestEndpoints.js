@@ -75,7 +75,9 @@ export default class RequestEndpoints {
       GetHomeBookingDetails: `${apiHost}listings/rooms/{0}`,
       GetQuoteIdExpirationFlag: `${apiHost}api/hotels/rooms/{0}/valid`,
       MarkQuoteIdAsLocked: `${apiHost}api/hotels/rooms/{0}/mark`,
-      GetConfigVarByName: `${apiHost}/application/config/{0}`,
+      GetConfigVarByName: `${apiHost}application/config/{0}`,
+      GetBookingWithTransactionHashById: `${apiHost}admin/panel/booking/{0}`,
+      UpdateBookingWithTransaction: `${apiHost}admin/panel/booking/{0}`,
       GetUserHasPendingBooking: `${apiHost}api/hotels/booking/pending`,
 
       // Query only
@@ -94,6 +96,7 @@ export default class RequestEndpoints {
       GetCalendarByListingIdAndDateRange: `${apiHost}calendars/search/findAllByListingIdAndDateBetween`,
       GetAllUnverifiedUsers: `${apiHost}admin/users/unverified`,
       GetAllVerifiedUsers: `${apiHost}admin/users/verified`,
+      GetAllBookingsWithTransactionHash: `${apiHost}admin/panel/booking/all`,
 
       // Both parameter and query
       GetHotelRooms: `${apiHost}api/hotels/{0}/rooms`,
