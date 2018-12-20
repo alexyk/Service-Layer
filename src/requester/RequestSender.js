@@ -23,7 +23,8 @@ export default class RequestSender {
     let requestHeaders = await methodRef(postObj, captchaToken);
 
     if (headers != null) {
-      delete requestHeaders.headers;
+      // delete requestHeaders.headers; // 2018-12-20 commented by Alex K - added headers from login as parameter. This particular line is not known what it does.
+      requestHeaders.headers = Object.assign(requestHeaders.headers, headers);
     }
     headers = requestHeaders;
 

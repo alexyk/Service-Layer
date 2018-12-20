@@ -31,12 +31,13 @@ export default class Requester {
    * @returns {Promise}
    * 
    */
-  login(userObj, captchaToken) {
+  login(userObj, captchaToken, headers) {
     return this._requestSender.sendRequest(
       this._requestEndpoints.GetRoute("Login"),
       RequestMethods.POST,
       userObj,
-      captchaToken).then(res => res);
+      captchaToken,
+      headers).then(res => res);
   }
 
   /**
