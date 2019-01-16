@@ -618,6 +618,18 @@ export default class Requester {
 
   /**
    * 
+   * @param {String} email 
+   * @returns {Promise}
+   * 
+   */
+  eraseUserByEmail(email) {
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("EraseUserByEmail"),
+      RequestMethods.POST, {email: email}).then(res => res);
+  }
+
+  /**
+   * 
    * @param {Array} searchTerm 
    * @returns {Promise}
    * 

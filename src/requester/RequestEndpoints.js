@@ -79,6 +79,7 @@ export default class RequestEndpoints {
       GetBookingWithTransactionHashById: `${apiHost}admin/panel/booking/{0}`,
       UpdateBookingWithTransaction: `${apiHost}admin/panel/booking/{0}`,
       GetUserHasPendingBooking: `${apiHost}hotels/booking/pending`,
+      EraseUserByEmail: `${apiHost}/admin/users/erase`,
 
       // Query only
       GetMyConversations: `${apiHost}users/me/conversations`,
