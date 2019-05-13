@@ -2,7 +2,7 @@ export default class RequestEndpoints {
   constructor(config) {
     const { apiHost } = config;
     this.routes = {
-      // Neighter parameter nor query
+      // Neither parameter nor query
       Register: `${apiHost}users/signup`,
       Login: `${apiHost}login`,
       GetCurrencies: `${apiHost}currencies`,
@@ -98,6 +98,7 @@ export default class RequestEndpoints {
       GetAllUnverifiedUsers: `${apiHost}admin/users/unverified`,
       GetAllVerifiedUsers: `${apiHost}admin/users/verified`,
       GetAllBookingsWithTransactionHash: `${apiHost}admin/panel/booking/all`,
+      GetLocRateByCurrency: `${apiHost}/convert`,
 
       // Both parameter and query
       GetHotelRooms: `${apiHost}hotels/{0}/rooms`,

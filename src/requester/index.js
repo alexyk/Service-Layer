@@ -750,12 +750,9 @@ export default class Requester {
    * 
    */
   getLocRateByCurrency(currency) {
-    return fetch(`https://api.coinmarketcap.com/v1/ticker/lockchain/?convert=${currency}`).then(res => {
-      return {
-        body: res.json(),
-        success: true
-      }
-    });
+    return this._requestSender.sendRequest(
+      this._requestEndpoints.GetRoute("GetLocRateByCurrency", null, [`currency=${currency}`, 'amount=1']),
+      RequestMethods.GET).then(res => res);
   }
 
   /**
