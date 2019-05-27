@@ -72,5 +72,5 @@ typings/
 # Serverless directories
 .serverless
 
-# Build
-lib/
+# Build - disabled in order to use as tag from guthub
+#lib/
