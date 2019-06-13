@@ -905,12 +905,16 @@ export default class Requester {
 
   /**
    * 
-   * @param {Number} regionId 
-   * @param {Number} page 
+   * @param {Number} regionId
+   * @param {Number} page Page index (0, 1 etc.)
+   * @param {Number} count Number of elements per page. It is limited to 1000 max
    * @returns {Promise}
    * 
    */
   getStaticHotels(regionId, page = 0, count = 10) {
+    if (count > 1000) {
+      console.warn(`[Service-Layer]] getStaticHotels - maximum number of elements is 1000, asking for ${count} will result in 1000 elements in result`);
+    }
     return this._requestSender.sendRequest(
       this._requestEndpoints.GetRoute("GetStaticHotels", [regionId], [`page=${page}`,`size=${count}`]),
       RequestMethods.GET).then(res => res);
