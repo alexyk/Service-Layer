@@ -5,13 +5,14 @@
 1. `git pull/checkout` (clean checkout, no node_modules)
 2. `npm install`
 3. Make changes
-4. Test (with Centralized-App - see the _Developing Flow_ _In Detail_ below)
-5. Commit and push your changes
+4. Build - run `npm run ES6-to-ES5`
+5. Test (with Centralized-App - see the _Developing Flow_ _In Detail_ below)
+6. Commit and push your changes
 
 ## Releasing Flow
 (short version)
-1. Make sure all changes are committed (step 5. in _Developing Flow_)
-2. `npm version patch|minor|major|...`
+1. Make sure all changes are committed (step 6. in _Developing Flow_)
+2. `npm version patch|minor|major|...` (this creates a tag and commits it - without pushing it)
 3. Push the version change and the new generated tag
 
 
@@ -21,8 +22,8 @@
 1. Make sure you have a clean checkout and no _node_modules/_ (delete it if present)
 2. Get dependencies with `npm install` 
 3. Make your changes
-4. Run `npm run ES6-to-ES5` to minify (_lib_ folder will be created)
-5. Test following these steps:
+4. Build - run `npm run ES6-to-ES5` to minify (_lib_ folder will be created)
+5. Test by following these steps:
    - copy the current working _Service-Layer_ folder   into _Centralized-App/node_modules/locktrip-svc-layer_
    - run _Centralized-App_ and make sure your changes working as expected 
  

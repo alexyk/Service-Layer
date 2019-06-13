@@ -910,9 +910,9 @@ export default class Requester {
    * @returns {Promise}
    * 
    */
-  getStaticHotels(regionId, page = 0) {
+  getStaticHotels(regionId, page = 0, count = 10) {
     return this._requestSender.sendRequest(
-      this._requestEndpoints.GetRoute("GetStaticHotels", [regionId], [`page=${page}`]),
+      this._requestEndpoints.GetRoute("GetStaticHotels", [regionId], [`page=${page}`,`size=${count}`]),
       RequestMethods.GET).then(res => res);
   }
 
