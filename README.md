@@ -22,7 +22,7 @@
 1. Make sure you have a clean checkout and no _node_modules/_ (delete it if present)
 2. Get dependencies with `npm install` 
 3. Make your changes
-4. Build - run `npm run ES6-to-ES5` to minify (_lib_ folder will be updated)
+4. Build - run `npm run ES6-to-ES5` (_lib_ folder will be updated)
 5. Test by following these steps:
    - copy the current working _Service-Layer_ folder   into _Centralized-App/node_modules/locktrip-svc-layer_
    - run _Centralized-App_ and make sure your changes working as expected 
