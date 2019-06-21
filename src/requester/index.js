@@ -1205,4 +1205,16 @@ export default class Requester {
       this._requestEndpoints.GetRoute("GetUserHasPendingBooking"),
       RequestMethods.GET).then(res => res);
   }
+
+    /**
+     *
+     * @param {Number} id
+     * @returns {Promise}
+     *
+     */
+    getStaticSingleHotel(id) {
+        return this._requestSender.sendRequest(
+            this._requestEndpoints.GetRoute("GetStaticSingleHotel", [id]),
+            RequestMethods.GET).then(res => res);
+    }
 }
