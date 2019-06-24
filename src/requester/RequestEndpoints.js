@@ -98,7 +98,7 @@ export default class RequestEndpoints {
             GetAllUnverifiedUsers: `${apiHost}admin/users/unverified`,
             GetAllVerifiedUsers: `${apiHost}admin/users/verified`,
             GetAllBookingsWithTransactionHash: `${apiHost}admin/panel/booking/all`,
-            GetLocRateByCurrency: `${apiHost}/convert`,
+            GetLocRateByCurrency: `${apiHost}convert`,
 
             // Both parameter and query
             GetHotelRooms: `${apiHost}hotels/{0}/rooms`,
@@ -150,7 +150,7 @@ export default class RequestEndpoints {
     let queryKvp = '';
     for (let i = 0; i < filteredQuery.length; i++) {
       if (i !== filteredQuery.length - 1) {
-        queryKvp += `${filteredQuery[i]} & `;
+        queryKvp += `${filteredQuery[i]}&`;
       }
       else {
         queryKvp += filteredQuery[i];
@@ -158,7 +158,7 @@ export default class RequestEndpoints {
     }
 
     // Build final query
-    const finalQuery = ` ?${queryKvp}`;
+    const finalQuery = `?${queryKvp}`;
     return finalQuery;
   }
 
