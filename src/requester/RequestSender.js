@@ -1,51 +1,80 @@
 import RequestEndpoints from './RequestEndpoints';
 import RequestMethods from './RequestMethods';
 import RequestParams from './RequestParams';
+import Axios from 'axios';
 
 export default class RequestSender {
   constructor(storage, config, headers = {}) {
     this._storage = storage;
     this.config = config;
     this.RequestParams = new RequestParams(storage, config, headers);
+    this.onServerResponse = this.onServerResponse.bind();
+    this.onServerError = this.onServerError.bind();
   }
 
+
   /**
-   * 
-   * @param {String} endpoint 
-   * @param {Enumerator} method 
-   * @param {Object} postObj 
+   *
+   * @param {String} endpoint
+   * @param {Enumerator} method
+   * @param {Object} postObj
    * @param {String} captchaToken
    * @returns {Object}
-   * 
+   *
    */
-  async sendRequest(endpoint, method, postObj = null, captchaToken = null, headers = null) {
+  async sendRequest(endpoint, method, postObj = null, captchaToken = null, config = null) {
     const methodRef = this.RequestParams[method].bind(this.RequestParams);
-    let requestHeaders = await methodRef(postObj, captchaToken);
+    let requestConfig = await methodRef(postObj, captchaToken);
 
-    if (headers != null) {
-      // delete requestHeaders.headers; // 2018-12-20 commented by Alex K - added headers from login as parameter. This particular line is not known what it does.
-      requestHeaders.headers = Object.assign(requestHeaders.headers, headers);
+    if (config != null) {
+      // delete requestConfig.headers; // 2018-12-20 commented by Alex K - added headers from login as parameter. This particular line is not known what it does.
+      requestConfig.headers = Object.assign(requestConfig.headers, config);
     }
-    headers = requestHeaders;
+    config = requestConfig;
 
-    return fetch(endpoint, headers)
-      .then((response) => {
-        if (!response.ok) {
-          return {
-            body: {},
-            success: response.ok,
-            errors: response.json().then((r) => {
-              this.checkExpiredJwtAndLogOff(r)
-              return r;
-            })
-          };
-        }
-        return {
-          body: response.json(),
-          success: response.ok,
-          errors: {}
-        };
+    if (method == 'GET') {
+      return (
+        Axios
+          .get(endpoint, config)
+          .then(this.onServerResponse)
+          .catch(this.onServerError)
+      )
+    } else {
+      return (
+        Axios
+          .post(endpoint, postObj, config)
+          .then(this.onServerResponse)
+          .catch(this.onServerError)
+      )
+    }
+  }
+
+
+  onServerResponse(response) {
+    const { data, status } = response;
+    let success = (status == 200);
+
+    let
+      body = {},
+      errors = {};
+
+    if (success) {
+      body = new Promise((resolve,reject) => {
+        resolve(data)
       });
+    } else {
+      errors = new Promise((resolve,reject) => {
+        this.checkExpiredJwtAndLogOff(data);
+        resolve(data);
+      })
+    }
+
+    return { body, success, errors };
+  }
+
+
+  onServerError(error) {
+    console.warn(`[requester] server error - ${error.message}`, {error});
   }
 
   checkExpiredJwtAndLogOff(r) {

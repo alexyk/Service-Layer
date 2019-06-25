@@ -1,7 +1,7 @@
 {
   "name": "locktrip-svc-layer",
   "version": "1.1.2",
-  "main": "lib/requester/index.js",
+  "main": "src/requester/index.js",
   "scripts": {
     "ES6-to-ES5": "npx babel src --presets babel-preset-env --out-dir lib",
     "update-version": "npm version patch",
@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/LockTrip/Service-Layer/issues"
   },
-  "homepage": "https://github.com/LockTrip/Service-Layer#readme"
+  "homepage": "https://github.com/LockTrip/Service-Layer#readme",
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
 }
