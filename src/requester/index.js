@@ -1,7 +1,12 @@
 import RequestEndpoints from './RequestEndpoints';
 import RequestMethods from './RequestMethods';
-import RequestParams from './RequestParams';
 import RequestSender from './RequestSender';
+
+export let DEBUG = false;
+export function setServiceDebug(value, from='') {
+  if (value) console.info(`[SERVER] Setting DEBUG in Service-Layer - from '${from}'`);
+  DEBUG = value;
+}
 
 export default class Requester {
   constructor(storage, config, headers = {}) {
@@ -10,11 +15,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Object} userObj 
-   * @param {String} captchaToken 
+   *
+   * @param {Object} userObj
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   register(userObj, captchaToken) {
     return this._requestSender.sendRequest(
@@ -25,11 +30,11 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Object} userObj
-   * @param {String} captchaToken 
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   login(userObj, captchaToken, headers) {
     return this._requestSender.sendRequest(
@@ -41,9 +46,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   getCurrencies() {
     return this._requestSender.sendRequest(
@@ -52,10 +57,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Number} id
    * @returns {Promise}
-   *  
+   *
    */
   getListing(id) {
     return this._requestSender.sendRequest(
@@ -64,11 +69,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} id 
-   * @param {Number} page 
+   *
+   * @param {Number} id
+   * @param {Number} page
    * @returns {Promise}
-   * 
+   *
    */
   getChatMessages(id, page = 0) {
     return this._requestSender.sendRequest(
@@ -78,9 +83,9 @@ export default class Requester {
 
   /**
    *
-   * @param {Array} searchTerm 
+   * @param {Array} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getMyConversations(searchTerm) {
     return this._requestSender.sendRequest(
@@ -89,11 +94,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Object} requestInfo 
-   * @param {String} captchaToken 
+   *
+   * @param {Object} requestInfo
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   requestBooking(requestInfo, captchaToken) {
     return this._requestSender.sendRequest(
@@ -102,10 +107,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Object} listingObj 
+   *
+   * @param {Object} listingObj
    * @returns {Promise}
-   * 
+   *
    */
   changeListingStatus(listingObj) {
     return this._requestSender.sendRequest(
@@ -114,10 +119,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Object} listingObj 
+   *
+   * @param {Object} listingObj
    * @returns {Promise}
-   * 
+   *
    */
   changeUserStatus(userObj) {
     return this._requestSender.sendRequest(
@@ -126,11 +131,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Object} listingObj 
-   * @param {String} captchaToken 
+   *
+   * @param {Object} listingObj
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   createListingProgress(listingObj, captchaToken) {
     return this._requestSender.sendRequest(
@@ -139,9 +144,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   getTopListings() {
     return this._requestSender.sendRequest(
@@ -150,10 +155,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Number} id
-   * @returns {Promise} 
-   * 
+   * @returns {Promise}
+   *
    */
   getListingProgress(id) {
     return this._requestSender.sendRequest(
@@ -162,10 +167,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Number} id
    * @returns {Promise}
-   *  
+   *
    */
   getMyListingById(id) {
     return this._requestSender.sendRequest(
@@ -174,10 +179,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {String} search
    * @returns {Promise}
-   *  
+   *
    */
   verifyUserEmail(search) {
     return this._requestSender.sendRequest(
@@ -186,10 +191,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {String} voteUrl 
+   *
+   * @param {String} voteUrl
    * @returns {Promise}
-   * 
+   *
    */
   editAirdropVoteUrl(voteUrl) {
     return this._requestSender.sendRequest(
@@ -198,11 +203,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {String} media 
-   * @param {String} profile 
+   *
+   * @param {String} media
+   * @param {String} profile
    * @returns {Promise}
-   * 
+   *
    */
   saveAirdropSocialProfile(media, profile) {
     return this._requestSender.sendRequest(
@@ -211,10 +216,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {String} token
    * @returns {Promise}
-   *  
+   *
    */
   verifyUserAirdropInfo(token) {
     return this._requestSender.sendRequest(
@@ -223,9 +228,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   getPropertyTypes() {
     return this._requestSender.sendRequest(
@@ -234,9 +239,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   getAmenitiesByCategory() {
     return this._requestSender.sendRequest(
@@ -245,10 +250,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Object} conversationObj 
+   *
+   * @param {Object} conversationObj
    * @returns {Promise}
-   * 
+   *
    */
   changeMessageStatus(conversationObj) {
     return this._requestSender.sendRequest(
@@ -257,9 +262,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   getCountOfMyUnreadMessages() {
     return this._requestSender.sendRequest(
@@ -268,11 +273,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Object} userObj 
-   * @param {String} captchaToken 
+   *
+   * @param {Object} userObj
+   * @param {String} captchaToken
    * @return {Promise}
-   * 
+   *
    */
   updateUserInfo(userObj, captchaToken) {
     return this._requestSender.sendRequest(
@@ -281,12 +286,12 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} id 
-   * @param {Object} listingObj 
-   * @param {String} captchaToken 
+   *
+   * @param {Number} id
+   * @param {Object} listingObj
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   updateListingProgress(id, listingObj, captchaToken) {
     return this._requestSender.sendRequest(
@@ -295,10 +300,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} id 
+   *
+   * @param {Number} id
    * @returns {Promise}
-   * 
+   *
    */
   deleteInProgressListing(id) {
     return this._requestSender.sendRequest(
@@ -307,12 +312,12 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} id 
-   * @param {Object} listingObj 
-   * @param {String} captchaToken 
+   *
+   * @param {Number} id
+   * @param {Object} listingObj
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   editListing(id, listingObj, captchaToken) {
     return this._requestSender.sendRequest(
@@ -321,10 +326,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Number} id
    * @returns {Promise}
-   *  
+   *
    */
   getHotelPictures(id) {
     return this._requestSender.sendRequest(
@@ -333,10 +338,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Array} searchTerm 
+   *
+   * @param {Array} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getMyListingsInProgress(searchTerm) {
     return this._requestSender.sendRequest(
@@ -345,11 +350,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Object} postObj 
-   * @param {String} captchaToken 
+   *
+   * @param {Object} postObj
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   sendNewPassword(postObj, captchaToken) {
     return this._requestSender.sendRequest(
@@ -358,10 +363,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} bookingId 
+   *
+   * @param {Number} bookingId
    * @returns {Promise}
-   * 
+   *
    */
   getCancellationFees(bookingId) {
     return this._requestSender.sendRequest(
@@ -370,9 +375,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   resendConfirmationEmail() {
     return this._requestSender.sendRequest(
@@ -381,10 +386,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {String} token 
+   *
+   * @param {String} token
    * @returns {Promise}
-   * 
+   *
    */
   checkIfAirdropUserExists(token) {
     return this._requestSender.sendRequest(
@@ -393,11 +398,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Array} searchTerm 
-   * @param {Number} size 
+   *
+   * @param {Array} searchTerm
+   * @param {Number} size
    * @returns {Promise}
-   * 
+   *
    */
   getMyHotelBookings(searchTerm, size = 10) {
     return this._requestSender.sendRequest(
@@ -406,10 +411,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Number} id
-   * @returns {Promise} 
-   * 
+   * @returns {Promise}
+   *
    */
   getRegionNameById(id) {
     return this._requestSender.sendRequest(
@@ -418,9 +423,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   getMyJsonFile() {
     return this._requestSender.sendRequest(
@@ -429,10 +434,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Object} bookingObj
    * @returns {Promise}
-   * 
+   *
    */
   cancelBooking(bookingObj) {
     return this._requestSender.sendRequest(
@@ -441,10 +446,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Object} bookingObj 
+   *
+   * @param {Object} bookingObj
    * @returns {Promise}
-   * 
+   *
    */
   confirmBooking(bookingObj) {
     return this._requestSender.sendRequest(
@@ -453,10 +458,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Array} searchTerm 
+   *
+   * @param {Array} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getRegionsBySearchParameter(searchTerm) {
     return this._requestSender.sendRequest(
@@ -465,10 +470,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {String} token 
+   *
+   * @param {String} token
    * @returns {Promise}
-   * 
+   *
    */
   sendRecoveryToken(token) {
     return this._requestSender.sendRequest(
@@ -477,11 +482,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {String} email 
-   * @param {String} captchaToken 
+   *
+   * @param {String} email
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   sendRecoveryEmail(email, captchaToken) {
     return this._requestSender.sendRequest(
@@ -490,12 +495,12 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} id 
-   * @param {Object} cancelTripObj 
-   * @param {String} captchaToken 
+   *
+   * @param {Number} id
+   * @param {Object} cancelTripObj
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   cancelTrip(id, cancelTripObj, captchaToken) {
     return this._requestSender.sendRequest(
@@ -504,11 +509,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} id 
-   * @param {String} captchaToken 
+   *
+   * @param {Number} id
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   acceptReservation(id, captchaToken) {
     return this._requestSender.sendRequest(
@@ -517,11 +522,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} id 
-   * @param {String} captchaToken 
+   *
+   * @param {Number} id
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   cancelReservation(id, captchaToken) {
     return this._requestSender.sendRequest(
@@ -530,12 +535,12 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} listingId 
-   * @param {Object} slotObj 
-   * @param {String} captchaToken 
+   *
+   * @param {Number} listingId
+   * @param {Object} slotObj
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   publishCalendarSlot(listingId, slotObj, captchaToken) {
     return this._requestSender.sendRequest(
@@ -544,11 +549,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Array} searchTerm 
-   * @param {Number} size 
+   *
+   * @param {Array} searchTerm
+   * @param {Number} size
    * @returns {Promise}
-   * 
+   *
    */
   getMyTrips(searchTerm, size = 10) {
     return this._requestSender.sendRequest(
@@ -557,11 +562,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Array} searchTerm 
-   * @param {Number} size 
+   *
+   * @param {Array} searchTerm
+   * @param {Number} size
    * @returns {Promise}
-   * 
+   *
    */
   getMyReservations(searchTerm, size = 10) {
     return this._requestSender.sendRequest(
@@ -570,10 +575,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Array} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getAllUnpublishedListings(searchTerm) {
     return this._requestSender.sendRequest(
@@ -582,10 +587,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Array} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getAllPublishedListings(searchTerm) {
     return this._requestSender.sendRequest(
@@ -594,10 +599,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Array} searchTerm 
+   *
+   * @param {Array} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getAllVerifiedUsers(searchTerm) {
     return this._requestSender.sendRequest(
@@ -606,10 +611,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Array} searchTerm 
+   *
+   * @param {Array} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getAllUnverifiedUsers(searchTerm) {
     return this._requestSender.sendRequest(
@@ -618,10 +623,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {String} email 
+   *
+   * @param {String} email
    * @returns {Promise}
-   * 
+   *
    */
   eraseUserByEmail(email) {
     return this._requestSender.sendRequest(
@@ -630,10 +635,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Array} searchTerm 
+   *
+   * @param {Array} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getMyListings(searchTerm) {
     return this._requestSender.sendRequest(
@@ -642,11 +647,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Object} messageObj 
-   * @param {Number} id 
+   *
+   * @param {Object} messageObj
+   * @param {Number} id
    * @returns {Promise}
-   * 
+   *
    */
   sendMessage(messageObj, id) {
     return this._requestSender.sendRequest(
@@ -655,11 +660,11 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Object} requestObj
    * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   requestBooking(requestObj, captchaToken) {
     return this._requestSender.sendRequest(
@@ -668,10 +673,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Array} searchTerm 
+   *
+   * @param {Array} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getListingsByFilter(searchTerm) {
     return this._requestSender.sendRequest(
@@ -680,10 +685,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Boolean} hasListings 
+   *
+   * @param {Boolean} hasListings
    * @returns {Promise}
-   * 
+   *
    */
   getCountries(hasListings = false) {
     return this._requestSender.sendRequest(
@@ -692,10 +697,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Number} countryId
    * @returns {Promise}
-   * 
+   *
    */
   getStates(countryId) {
     return this._requestSender.sendRequest(
@@ -704,11 +709,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} countryId 
-   * @param {Boolean} hasListings 
+   *
+   * @param {Number} countryId
+   * @param {Boolean} hasListings
    * @returns {Promise}
-   * 
+   *
    */
   getCities(countryId, hasListings = false) {
     return this._requestSender.sendRequest(
@@ -717,12 +722,12 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} id 
-   * @param {Object} priceObj 
-   * @param {String} captchaToken 
+   *
+   * @param {Number} id
+   * @param {Object} priceObj
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   editDefaultDailyPrice(id, priceObj, captchaToken) {
     return this._requestSender.sendRequest(
@@ -731,11 +736,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Object} listingObj 
-   * @param {String} captchaToken 
+   *
+   * @param {Object} listingObj
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   createListing(listingObj, captchaToken) {
     return this._requestSender.sendRequest(
@@ -744,10 +749,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {String} currency 
+   *
+   * @param {String} currency
    * @returns {Promise}
-   * 
+   *
    */
   getLocRateByCurrency(currency) {
     return this._requestSender.sendRequest(
@@ -756,10 +761,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {String} email 
+   *
+   * @param {String} email
    * @returns {Promise}
-   * 
+   *
    */
   getEmailFreeResponse(email) {
     email = email || 'info@locktrip.com';
@@ -769,9 +774,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   getCurrencyRates() {
     return this._requestSender.sendRequest(
@@ -780,10 +785,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Object} bookingObj 
+   *
+   * @param {Object} bookingObj
    * @returns {Promise}
-   * 
+   *
    */
   createReservation(bookingObj) {
     return this._requestSender.sendRequest(
@@ -792,11 +797,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} id 
-   * @param {Array} searchTerm 
+   *
+   * @param {Number} id
+   * @param {Array} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getHotelRooms(id, searchTerm) {
     return this._requestSender.sendRequest(
@@ -805,11 +810,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} id 
-   * @param {Array} searchTerm 
+   *
+   * @param {Number} id
+   * @param {Array} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getHotelById(id, searchTerm) {
     return this._requestSender.sendRequest(
@@ -818,9 +823,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   getUserInfo() {
     return this._requestSender.sendRequest(
@@ -829,11 +834,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} id 
-   * @param {String} captchaToken 
+   *
+   * @param {Number} id
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   deleteListing(id, captchaToken) {
     return this._requestSender.sendRequest(
@@ -842,12 +847,12 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} id 
-   * @param {Object} contactHostObj 
-   * @param {String} captchaToken 
+   *
+   * @param {Number} id
+   * @param {Object} contactHostObj
+   * @param {String} captchaToken
    * @returns {Promise}
-   * 
+   *
    */
   contactHost(id, contactHostObj, captchaToken) {
     return this._requestSender.sendRequest(
@@ -856,10 +861,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Array} searchTerm 
+   *
+   * @param {Array} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getCalendarByListingIdAndDateRange(searchTerm) {
     return this._requestSender.sendRequest(
@@ -868,9 +873,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   getUserAirdropInfo() {
     return this._requestSender.sendRequest(
@@ -879,10 +884,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {String} searchTerm 
+   *
+   * @param {String} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getMapInfo(searchTerm) {
     return this._requestSender.sendRequest(
@@ -891,11 +896,11 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {String} searchTerm 
-   * @param {String} filters 
+   *
+   * @param {String} searchTerm
+   * @param {String} filters
    * @returns {Promise}
-   * 
+   *
    */
   getLastSearchHotelResultsByFilter(searchTerm, filters) {
     return this._requestSender.sendRequest(
@@ -904,12 +909,12 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Number} regionId
    * @param {Number} page Page index (0, 1 etc.)
    * @param {Number} size Number of elements per page. It is limited to 1000 max
    * @returns {Promise}
-   * 
+   *
    */
   getStaticHotels(regionId, page = 0, size = 10) {
     if (size > 1000) {
@@ -921,10 +926,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Number} id 
+   *
+   * @param {Number} id
    * @returns {Promise}
-   * 
+   *
    */
   getHotelBookingDetails(id) {
     return this._requestSender.sendRequest(
@@ -933,10 +938,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {String} email 
+   *
+   * @param {String} email
    * @returns {Promise}
-   * 
+   *
    */
   getExternalCampaignBalance(email) {
     return this._requestSender.sendRequest(
@@ -951,10 +956,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Object} paymentInfo
    * @returns {Promise}
-   * 
+   *
    */
   verifyCreditCardPayment(paymentInfo) {
     return this._requestSender.sendRequest(
@@ -963,10 +968,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {String} url
    * @returns {Promise}
-   * 
+   *
    */
   payWithCreditCard(url) {
     return this._requestSender.sendRequest(
@@ -975,10 +980,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {String} url
    * @returns {Promise}
-   * 
+   *
    */
   getCurrentLocEurRate(url) {
     return this._requestSender.sendRequest(
@@ -989,7 +994,7 @@ export default class Requester {
   /**
    * @param {Object} emailVerificationRedirectURL
    * @returns {Promise}
-   * 
+   *
    */
   sendVerificationEmail(emailVerificationRedirectURL) {
     return this._requestSender.sendRequest(
@@ -998,10 +1003,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Object} emailVerificationSecurityCode
    * @returns {Promise}
-   * 
+   *
    */
   verifyEmailSecurityCode(emailVerificationSecurityCode) {
     return this._requestSender.sendRequest(
@@ -1012,7 +1017,7 @@ export default class Requester {
   /**
    *
    * @returns {Promise}
-   * 
+   *
    */
   getTopHotels() {
     return this._requestSender.sendRequest(
@@ -1023,7 +1028,7 @@ export default class Requester {
   /**
    *
    * @returns {Promise}
-   * 
+   *
    */
   getHomeBookingDetails(id) {
     return this._requestSender.sendRequest(
@@ -1034,7 +1039,7 @@ export default class Requester {
   /**
    *
    * @returns {Promise}
-   * 
+   *
    */
   getQuoteIdExpirationFlag(id) {
     return this._requestSender.sendRequest(
@@ -1043,11 +1048,11 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Number} id
    * @param {Object} quoteIdObj
    * @returns {Promise}
-   * 
+   *
    */
   markQuoteIdAsLocked(id, quoteIdObj) {
     return this._requestSender.sendRequest(
@@ -1056,10 +1061,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Object} booking
    * @returns {Promise}
-   * 
+   *
    */
   quoteBooking(booking) {
     return this._requestSender.sendRequest(
@@ -1068,9 +1073,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   withdrawTokensFromAirdrop() {
     return this._requestSender.sendRequest(
@@ -1079,9 +1084,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   checkIfAirdropUserIsVerified() {
     return this._requestSender.sendRequest(
@@ -1090,9 +1095,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   checkIfAirdropWithdrawHasStarted() {
     return this._requestSender.sendRequest(
@@ -1101,9 +1106,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   getAirdropLocRate() {
     return this._requestSender.sendRequest(
@@ -1112,10 +1117,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Object} locRate
    * @returns {Promise}
-   * 
+   *
    */
   updateAirdropLocRate(locRate) {
     return this._requestSender.sendRequest(
@@ -1124,9 +1129,9 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @returns {Promise}
-   * 
+   *
    */
   getConfigVars() {
     return this._requestSender.sendRequest(
@@ -1135,10 +1140,10 @@ export default class Requester {
   }
 
   /**
-  * 
+  *
   * @param {String} variable
   * @returns {Promise}
-  * 
+  *
   */
   getConfigVarByName(variable) {
     return this._requestSender.sendRequest(
@@ -1147,10 +1152,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {Array} configVars
    * @returns {Promise}
-   * 
+   *
    */
   updateConfigVars(configVars) {
     return this._requestSender.sendRequest(
@@ -1159,10 +1164,10 @@ export default class Requester {
   }
 
   /**
-   * 
-   * @param {Array} searchTerm 
+   *
+   * @param {Array} searchTerm
    * @returns {Promise}
-   * 
+   *
    */
   getAllBookingsWithTransactionHash(searchTerm) {
     return this._requestSender.sendRequest(
@@ -1171,10 +1176,10 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {String} id
    * @returns {Promise}
-   * 
+   *
    */
   getBookingWithTransactionHashById(id) {
     return this._requestSender.sendRequest(
@@ -1183,11 +1188,11 @@ export default class Requester {
   }
 
   /**
-   * 
+   *
    * @param {String} id
    * @param {Object} booking
    * @returns {Promise}
-   * 
+   *
    */
   updateBookingWithTransaction(id, booking) {
     return this._requestSender.sendRequest(
@@ -1198,7 +1203,7 @@ export default class Requester {
   /**
    *
    * @returns {Promise}
-   * 
+   *
    */
   getUserHasPendingBooking() {
     return this._requestSender.sendRequest(
