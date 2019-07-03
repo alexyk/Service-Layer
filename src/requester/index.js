@@ -1217,4 +1217,16 @@ export default class Requester {
             this._requestEndpoints.GetRoute("GetStaticSingleHotel", [id]),
             RequestMethods.GET).then(res => res);
     }
+
+    /**
+     *
+     * @param {String} searchTerm
+     * @returns {Promise}
+     *
+     */
+    getSearchHotelResults(searchTerm) {
+        return this._requestSender.sendRequest(
+            this._requestEndpoints.GetRoute("GetSearchHotelResults", [searchTerm]),
+            RequestMethods.GET).then(res => res);
+    }
 }

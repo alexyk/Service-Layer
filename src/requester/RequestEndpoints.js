@@ -106,7 +106,8 @@ export default class RequestEndpoints {
             GetCities: `${apiHost}countries/{0}/cities`,
             GetStates: `${apiHost}countries/{0}/states`,
 
-            GetStaticSingleHotel: `${apiHost}regions/hotel/{0}`
+            GetStaticSingleHotel: `${apiHost}regions/hotel/{0}`,
+            GetSearchHotelResults: `${apiHost}hotels/search{0}`
     }
   }
 
