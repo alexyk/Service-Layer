@@ -32,7 +32,14 @@ export default class RequestSender {
     }
     config = requestConfig;
 
-    if (DEBUG) console.info(`[SERVER] ${method} - ${endpoint}`)
+    if (DEBUG) {
+      const debugText = `[SERVER] Request ${method} - ${endpoint}`;
+      if (method == "GET") {
+        console.info(debugText)
+      } else {
+        console.info(debugText, {postObj});
+      }
+    }
 
     if (method == 'GET') {
       return (
