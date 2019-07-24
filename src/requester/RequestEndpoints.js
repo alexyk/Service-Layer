@@ -80,6 +80,11 @@ export default class RequestEndpoints {
             UpdateBookingWithTransaction: `${apiHost}admin/panel/booking/{0}`,
             GetUserHasPendingBooking: `${apiHost}hotels/booking/pending`,
             EraseUserByEmail: `${apiHost}/admin/users/erase`,
+            GetDistanceByHotelId: `${apiHost}/hotels/{0}/distances`,
+            GetHotelAddress: `${apiHost}/hotels/{0}/address`,
+            GetHotelFeatures: `${apiHost}/hotels/{0}/features`,
+            GetNearbyHotelsByHotelId: `${apiHost}/hotels/{0}/nearbyHotels`,
+            GetCancellationPolicyByQuoteId: `${apiHost}/hotels/{0}/cancellationPolicy`,
 
             // Query only
             GetMyConversations: `${apiHost}users/me/conversations`,
