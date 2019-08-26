@@ -42,12 +42,12 @@ export default class RequestSender {
           success: response.ok,
           errors: response
             .text()
-            .then((repsonseAsRawText) => {
+            .then((responseAsRawText) => {
               let jsonData;
 
               // strip of HTML tags and CSS
               const regex = /(<([^>]+)>|\{[^\}]+\})/igm;
-              let responseAsPlainText = repsonseAsRawText.replace(regex, '');
+              let responseAsPlainText = responseAsRawText.replace(regex, '');
               // strip of new lines
               responseAsPlainText = responseAsPlainText.replace(/\r?\n|\r/mg, '');
               // strip of tabs
@@ -57,9 +57,9 @@ export default class RequestSender {
 
               // try parsing JSON
               try {
-                jsonData = JSON.parse(repsonseAsRawText)
+                jsonData = JSON.parse(responseAsRawText)
               } catch (jsonError) {
-                jsonData = {jsonError, repsonseAsRawText, responseAsPlainText}
+                jsonData = {jsonError, responseAsRawText, responseAsPlainText}
               }
               _this.checkExpiredJwtAndLogOff(jsonData);
 
