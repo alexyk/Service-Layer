@@ -14,7 +14,13 @@
 1. Make sure all changes are committed (step 6. in _Developing Flow_)  
 2. `npm version patch|minor|major|...` (this creates a tag and commits it - without pushing it)  
 3. Push the version change and the new generated tag  
-  
+
+
+## Alternative Release Flow
+(short version)  
+1. Commit changes
+2. Run `npm run release <version-string>` to release (compiles and creates a tag)
+
   
 # In Detail
 
@@ -34,3 +40,12 @@
 1. Make sure all code is pushed to _Service-Layer_ on GitHub (step 6. in _Developing Flow_)
 2. Run `npm version patch` to update version (or whatever other neded `npm version` alternative - minor, major etc.).
 3. Push the version change and tag (created by `npm version ...` command in previous step 2.)
+
+## Alternative Release Flow
+1. Commit all changes to files in _src/_
+2. Run `npm run release <version-string>` to both transpile from ES6 to ES5 and create a release with a git tag.  
+For example
+`npm version release 1.1.9-rc1` would:
+   * compile with `npm run ES6-to-ES5`
+   * then commit with message "Prepare a release"
+   * then run `npm version 1.1.9-rc1` - this will change and commit _package.json_ and _package-lock.json_ with new version and create a git tag with this version

@@ -1,5 +1,3 @@
-import RequestEndpoints from "./RequestEndpoints";
-import RequestMethods from "./RequestMethods";
 import RequestParams from "./RequestParams";
 
 export default class RequestSender {
@@ -35,45 +33,83 @@ export default class RequestSender {
     }
     headers = requestHeaders;
 
-    return fetch(endpoint, headers).then(response => {
-      if (!response.ok) {
-        return {
-          body: {},
-          success: response.ok,
-          errors: response
-            .text()
-            .then((responseAsRawText) => {
-              let jsonData;
-
-              // strip of HTML tags and CSS
-              const regex = /(<([^>]+)>|\{[^\}]+\})/igm;
-              let responseAsPlainText = responseAsRawText.replace(regex, '');
-              // strip of new lines
-              responseAsPlainText = responseAsPlainText.replace(/\r?\n|\r/mg, '');
-              // strip of tabs
-              responseAsPlainText = responseAsPlainText.replace(/\t/g, ' ');
-              // strip of more than 2 spaces
-              responseAsPlainText = responseAsPlainText.replace(/ {2,}/g, ' ');
-
-              // try parsing JSON
-              try {
-                jsonData = JSON.parse(responseAsRawText)
-              } catch (jsonError) {
-                jsonData = {jsonError, responseAsRawText, responseAsPlainText}
-              }
-              _this.checkExpiredJwtAndLogOff(jsonData);
-
-              return jsonData;
-            })
-            .catch(error => error)
-        };
+    return new Promise(function(resolve, reject) {
+      let id;
+      if (_this.config.connectionTimeout != null) {
+        id = setTimeout(() => {
+            id = null;
+            reject(new Error("timeout"));
+          }, 
+          _this.config.connectionTimeout
+        );
       }
 
-      return {
-        body: response.json(),
-        success: response.ok,
-        errors: {}
-      };
+      fetch(endpoint, headers)
+        .then(response => {
+          if (id != null) {
+            clearTimeout(id);
+            id = null;
+          }
+
+          if (!response.ok) {
+            resolve({
+              body: {},
+              success: response.ok,
+              errors: response
+                .text()
+                .then(responseAsRawText => {
+                  let jsonData;
+
+                  // strip of HTML tags and CSS
+                  const regex = /(<([^>]+)>|\{[^\}]+\})/gim;
+                  let responseAsPlainText = responseAsRawText.replace(
+                    regex,
+                    ""
+                  );
+                  // strip of new lines
+                  responseAsPlainText = responseAsPlainText.replace(
+                    /\r?\n|\r/gm,
+                    ""
+                  );
+                  // strip of tabs
+                  responseAsPlainText = responseAsPlainText.replace(/\t/g, " ");
+                  // strip of more than 2 spaces
+                  responseAsPlainText = responseAsPlainText.replace(
+                    / {2,}/g,
+                    " "
+                  );
+
+                  // try parsing JSON
+                  try {
+                    jsonData = JSON.parse(responseAsRawText);
+                  } catch (jsonError) {
+                    jsonData = {
+                      jsonError,
+                      responseAsRawText,
+                      responseAsPlainText
+                    };
+                  }
+                  _this.checkExpiredJwtAndLogOff(jsonData);
+
+                  return jsonData;
+                })
+                .catch(error => error)
+            });
+          }
+
+          resolve({
+            body: response.json(),
+            success: response.ok,
+            errors: {}
+          });
+        })
+        .catch(error => {
+          if (id != null) {
+            clearTimeout(id);
+            id = null;
+          }
+          reject(error);
+        });
     });
   }
 

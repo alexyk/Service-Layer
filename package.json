@@ -6,7 +6,9 @@
     "ES6-to-ES5": "npx babel src --presets babel-preset-env --out-dir lib",
     "update-version": "npm version patch",
     "publish-version": "npm publish",
-    "deploy": "npm-run-all ES6-to-ES5 publish-version"
+    "deploy": "npm-run-all ES6-to-ES5 publish-version",
+    "commit": "git add -A; git diff-index --quiet HEAD || git commit -a -m 'Prepare a release'",
+    "release": "npm-run-all ES6-to-ES5 commit && npm version"
   },
   "presets": [
     "env"
