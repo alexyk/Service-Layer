@@ -51,6 +51,7 @@ export default class RequestSender {
             id = null;
           }
 
+          // prettier-ignore
           if (!response.ok) {
             resolve({
               body: {},
@@ -62,22 +63,13 @@ export default class RequestSender {
 
                   // strip of HTML tags and CSS
                   const regex = /(<([^>]+)>|\{[^\}]+\})/gim;
-                  let responseAsPlainText = responseAsRawText.replace(
-                    regex,
-                    ""
-                  );
+                  let responseAsPlainText = responseAsRawText.replace(regex, "");
                   // strip of new lines
-                  responseAsPlainText = responseAsPlainText.replace(
-                    /\r?\n|\r/gm,
-                    ""
-                  );
+                  responseAsPlainText = responseAsPlainText.replace(/\r?\n|\r/gm, "");
                   // strip of tabs
                   responseAsPlainText = responseAsPlainText.replace(/\t/g, " ");
                   // strip of more than 2 spaces
-                  responseAsPlainText = responseAsPlainText.replace(
-                    / {2,}/g,
-                    " "
-                  );
+                  responseAsPlainText = responseAsPlainText.replace(/ {2,}/g, " ");
 
                   // try parsing JSON
                   try {
