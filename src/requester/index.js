@@ -40,6 +40,16 @@ export default class Requester {
             headers).then(res => res);
     }
 
+    /// @@@@
+    mobileLogin(userObj, captchaToken, headers) {
+        return this._requestSender.sendRequest(
+            this._requestEndpoints.GetRoute("MobileLogin"),
+            RequestMethods.POST,
+            userObj,
+            captchaToken,
+            headers).then(res => res);
+    }
+
     /**
      *
      * @returns {Promise}

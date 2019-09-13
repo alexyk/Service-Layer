@@ -5,6 +5,7 @@ export default class RequestEndpoints {
             // Neither parameter nor query
             Register: `${apiHost}users/signup`,
             Login: `${apiHost}login`,
+            MobileLogin: `${apiHost}/mobile/login`,
             GetCurrencies: `${apiHost}currencies`,
             RequestBooking: `${apiHost}reservations/request`,
             ChangeListingStatus: `${apiHost}admin/listings/state`,
