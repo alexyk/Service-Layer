@@ -77,6 +77,8 @@ export default class RequestSender {
                   } catch (jsonError) {
                     jsonData = {
                       jsonError,
+                      endpoint,
+                      response,
                       responseAsRawText,
                       responseAsPlainText
                     };
