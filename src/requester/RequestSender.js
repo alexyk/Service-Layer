@@ -1,5 +1,3 @@
-import RequestEndpoints from './RequestEndpoints';
-import RequestMethods from './RequestMethods';
 import RequestParams from './RequestParams';
 
 export default class RequestSender {
@@ -35,7 +33,7 @@ export default class RequestSender {
             body: {},
             success: response.ok,
             errors: response.json().then((r) => {
-              this.checkExpiredJwtAndLogOff(r)
+              this.checkExpiredJwtAndLogOff(r);
               return r;
             })
           };
