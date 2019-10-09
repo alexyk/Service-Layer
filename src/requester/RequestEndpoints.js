@@ -7,7 +7,7 @@ export default class RequestEndpoints {
             Login: `${apiHost}/auth/login`,
             Oauth2Facebook: `${apiHost}/oauth2/authorize/facebook`,
             Oauth2Google: `${apiHost}/oauth2/authorize/google`,
-            Oauth2Twitter: `${apiHost}/oauth2/authorize/twitter`,
+            Oauth2Twitter: `${apiHost}/auth/authorize/twitter`,
             GetCurrencies: `${apiHost}/currencies`,
             RequestBooking: `${apiHost}/reservations/request`,
             ChangeListingStatus: `${apiHost}/admin/listings/state`,
@@ -109,6 +109,7 @@ export default class RequestEndpoints {
 
             // Both parameter and query
             GetHotelRooms: `${apiHost}/hotels/{0}/rooms`,
+            GetHotelRoomsUpdated: `${apiHost}/hotels/{0}/rooms/updated`,
             GetHotelById: `${apiHost}/hotels/{0}`,
             GetCities: `${apiHost}/countries/{0}/cities`,
             GetStates: `${apiHost}/countries/{0}/states`,

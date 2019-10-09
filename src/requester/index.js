@@ -846,6 +846,18 @@ export default class Requester {
      * @returns {Promise}
      *
      */
+    getHotelRoomsUpdated(id, searchTerm) {
+        return this._requestSender.sendRequest(
+            this._requestEndpoints.GetRoute("GetHotelRoomsUpdated", [id], searchTerm),
+            RequestMethods.GET).then(res => res);
+    }
+    /**
+     *
+     * @param {Number} id
+     * @param {Array} searchTerm
+     * @returns {Promise}
+     *
+     */
     getHotelById(id, searchTerm) {
         return this._requestSender.sendRequest(
             this._requestEndpoints.GetRoute("GetHotelById", [id], searchTerm),
