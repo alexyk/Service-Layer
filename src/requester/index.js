@@ -1,6 +1,5 @@
 import RequestEndpoints from './RequestEndpoints';
 import RequestMethods from './RequestMethods';
-import RequestParams from './RequestParams';
 import RequestSender from './RequestSender';
 
 export default class Requester {
@@ -39,6 +38,42 @@ export default class Requester {
             captchaToken,
             headers).then(res => res);
     }
+
+  /**
+   *
+   * @param {String} redirectUri
+   * @returns {Promise}
+   *
+   */
+  oauth2Facebook(redirectUri) {
+    return this._requestSender.sendRequest(
+        this._requestEndpoints.GetRoute("Oauth2Facebook", [redirectUri]),
+        RequestMethods.GET).then(res => res);
+  }
+
+  /**
+   *
+   * @param {String} redirectUri
+   * @returns {Promise}
+   *
+   */
+  oauth2Google(redirectUri) {
+    return this._requestSender.sendRequest(
+        this._requestEndpoints.GetRoute("Oauth2Google", [redirectUri]),
+        RequestMethods.GET).then(res => res);
+  }
+
+  /**
+   *
+   * @param {String} redirectUri
+   * @returns {Promise}
+   *
+   */
+  oauth2Twitter(redirectUri) {
+    return this._requestSender.sendRequest(
+        this._requestEndpoints.GetRoute("Oauth2Twitter", [redirectUri]),
+        RequestMethods.GET).then(res => res);
+  }
 
     /**
      *
@@ -804,6 +839,18 @@ export default class Requester {
             RequestMethods.GET).then(res => res);
     }
 
+    /**
+     *
+     * @param {Number} id
+     * @param {Array} searchTerm
+     * @returns {Promise}
+     *
+     */
+    getHotelRoomsUpdated(id, searchTerm) {
+        return this._requestSender.sendRequest(
+            this._requestEndpoints.GetRoute("GetHotelRoomsUpdated", [id], searchTerm),
+            RequestMethods.GET).then(res => res);
+    }
     /**
      *
      * @param {Number} id

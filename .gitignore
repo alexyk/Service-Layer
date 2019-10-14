@@ -74,3 +74,6 @@ typings/
 
 # Build - disabled in order to use as tag from guthub
 #lib/
+
+.idea/
+.idea/workspace.xml
