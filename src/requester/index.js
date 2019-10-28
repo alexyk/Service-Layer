@@ -580,6 +580,20 @@ export default class Requester {
 
     /**
      *
+     * @param {Number} regionId
+     * @param {Number} page Page index (0, 1 etc.)
+     * @param {Number} size Number of elements per page.
+     * @param {Object} availableIdObj {"cityId": regionId, "availableIds":[1,2,3(availableIds from socket result)]}
+     * @returns {Promise}
+     *
+     */
+    getStaticHotelsAvailable(regionId,availableIdObj, page = 0, size = 10) {
+        return this._requestSender.sendRequest(
+            this._requestEndpoints.GetRoute("GetStaticHotelsAvailable", [regionId], [`page=${page}`, `size=${size}`]),
+            RequestMethods.POST,availableIdObj).then(res => res);
+    }
+    /**
+     *
      * @param {Array} searchTerm
      * @param {Number} size
      * @returns {Promise}
