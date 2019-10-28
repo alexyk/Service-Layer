@@ -3,13 +3,9 @@
   "version": "1.2.0-mobile",
   "main": "lib/requester/index.js",
   "scripts": {
-    "ES6-to-ES5": "npx babel src --presets @babel/preset-env --out-dir lib",
-    "update-version": "npm version patch",
-    "publish-version": "npm publish",
-    "deploy": "npm-run-all ES6-to-ES5 publish-version",
-    "compile": "npm-run-all ES6-to-ES5",
+    "build": "npx babel src --presets @babel/preset-env --out-dir lib",
     "commit": "git add -A; git diff-index --quiet HEAD || git commit -a -m 'Prepare a release'",
-    "release": "npm-run-all ES6-to-ES5 commit && npm version"
+    "release": "npm-run-all build commit && npm version"
   },
   "presets": [
     "env"

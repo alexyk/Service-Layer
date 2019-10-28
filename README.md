@@ -5,7 +5,7 @@
 1. `git pull/checkout` (clean checkout, no node_modules)  
 2. `npm install`  
 3. Make changes  
-4. Build - run `npm run ES6-to-ES5` (_lib_ folder will be updated) 
+4. Build - run `npm run build` (_lib_ folder will be updated) 
 5. Test (with Centralized-App - see the _Developing Flow_ _In Detail_ below)  
 6. Commit and push your changes  
 
@@ -28,7 +28,7 @@
 1. Make sure you have a clean checkout and no _node_modules/_ (delete it if present)
 2. Get dependencies with `npm install` 
 3. Make your changes
-4. Build - run `npm run ES6-to-ES5` (_lib_ folder will be updated)
+4. Build - run `npm run build` (_lib_ folder will be updated)
 5. Test by following these steps:
    - copy the current working _Service-Layer_ folder   into _Centralized-App/node_modules/locktrip-svc-layer_
    - run _Centralized-App_ and make sure your changes working as expected 
@@ -46,6 +46,6 @@
 2. Run `npm run release <version-string>` to both transpile from ES6 to ES5 and create a release with a git tag.  
 For example
 `npm version release 1.1.9-rc1` would:
-   * compile with `npm run ES6-to-ES5`
+   * compile with `npm run build`
    * then commit with message "Prepare a release"
    * then run `npm version 1.1.9-rc1` - this will change and commit _package.json_ and _package-lock.json_ with new version and create a git tag with this version
