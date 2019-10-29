@@ -1025,6 +1025,18 @@ export default class Requester {
 
     /**
      *
+     * @param {Object} paymentInfo
+     * @returns {Promise}
+     *
+     */
+    ApplyCoinbaseHotelPayment(paymentInfo) {
+        return this._requestSender.sendRequest(
+            this._requestEndpoints.GetRoute("ApplyCoinbaseHotelPayment"),
+            RequestMethods.POST, paymentInfo).then(res => res);
+    }
+
+    /**
+     *
      * @param {String} url
      * @returns {Promise}
      *

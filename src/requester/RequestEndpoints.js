@@ -33,6 +33,7 @@ export default class RequestEndpoints {
             EditAirdropVoteUrl: `${apiHost}/airdrop/editVoteUrl`,
             UpdateUserAdditionalInfo: `${apiHost}/users/me/identity`,
             VerifyCreditCardPayment: `${apiHost}/payment/creditcard`,
+            ApplyCoinbaseHotelPayment: `${apiHost}/payment/coinbase/hotel`,
             GetTopHotels: `${apiHost}/hotels/top`,
             SendVerificationEmail: `${apiHost}/users/me/sendEmailVerification`,
             VerifyEmailSecurityCode: `${apiHost}/users/me/checkingEmailVerificationSecurityCode`,
