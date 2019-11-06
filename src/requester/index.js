@@ -78,6 +78,34 @@ export default class Requester {
         RequestMethods.GET).then(res => res);
   }
 
+  /**
+   * 
+   * @param {String} serviceName One of "google"|"twitter"|"facebook"
+   * @param {String} callbackUrl When authentication finished this is the url that opens with the token as parameter
+   */
+  getSocialLoginURL(serviceName, callbackUrl='') {
+    let result = '';
+
+    const query = (callbackUrl ? [`redirect_uri=${callbackUrl}`] : null);
+
+    switch (serviceName) {
+        case 'google':
+            result = this._requestEndpoints.GetRoute("Oauth2Google", null, query);
+            break;
+    
+        case 'twitter':
+            result = this._requestEndpoints.GetRoute("Oauth2Twitter", null, query);
+            break;
+    
+        case 'facebook':
+            result = this._requestEndpoints.GetRoute("Oauth2Facebook", null, query);
+            break;
+    
+    }
+
+    return result;
+  }
+
     /**
      *
      * @returns {Promise}

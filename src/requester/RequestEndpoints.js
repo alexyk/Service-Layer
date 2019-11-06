@@ -5,9 +5,6 @@ export default class RequestEndpoints {
 
             Register: `${apiHost}/auth/signup`,
             Login: `${apiHost}/auth/login`,
-            Oauth2Facebook: `${apiHost}/oauth2/authorize/facebook`,
-            Oauth2Google: `${apiHost}/oauth2/authorize/google`,
-            Oauth2Twitter: `${apiHost}/auth/authorize/twitter`,
             GetCurrencies: `${apiHost}/currencies`,
             RequestBooking: `${apiHost}/reservations/request`,
             ChangeListingStatus: `${apiHost}/admin/listings/state`,
@@ -91,6 +88,9 @@ export default class RequestEndpoints {
             GetCancellationPolicyByQuoteId: `${apiHost}/hotels/{0}/cancellationPolicy`,
 
             // Query only
+            Oauth2Facebook: `${apiHost}/oauth2/authorize/facebook`,
+            Oauth2Google: `${apiHost}/oauth2/authorize/google`,
+            Oauth2Twitter: `${apiHost}/auth/authorize/twitter`,
             GetMyConversations: `${apiHost}/users/me/conversations`,
             GetMyListingsInProgress: `${apiHost}/users/me/listings/incomplete`,
             GetMyHotelBookings: `${apiHost}/users/me/bookings`,
