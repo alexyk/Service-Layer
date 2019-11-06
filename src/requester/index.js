@@ -42,6 +42,7 @@ export default class Requester {
   /**
    *
    * @param {String} redirectUri
+   * @param {Number} refId
    * @returns {Promise}
    *
    */
@@ -54,6 +55,7 @@ export default class Requester {
   /**
    *
    * @param {String} redirectUri
+   * @param {Number} refId
    * @returns {Promise}
    *
    */
@@ -66,6 +68,7 @@ export default class Requester {
   /**
    *
    * @param {String} redirectUri
+   * @param {Number} refId
    * @returns {Promise}
    *
    */
