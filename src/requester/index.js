@@ -45,9 +45,9 @@ export default class Requester {
    * @returns {Promise}
    *
    */
-  oauth2Facebook(redirectUri) {
+  oauth2Facebook(redirectUri,refId) {
     return this._requestSender.sendRequest(
-        this._requestEndpoints.GetRoute("Oauth2Facebook", [redirectUri]),
+        this._requestEndpoints.GetRoute("Oauth2Facebook", [redirectUri,refId]),
         RequestMethods.GET).then(res => res);
   }
 
@@ -57,9 +57,9 @@ export default class Requester {
    * @returns {Promise}
    *
    */
-  oauth2Google(redirectUri) {
+  oauth2Google(redirectUri,refId) {
     return this._requestSender.sendRequest(
-        this._requestEndpoints.GetRoute("Oauth2Google", [redirectUri]),
+        this._requestEndpoints.GetRoute("Oauth2Google", [redirectUri,refId]),
         RequestMethods.GET).then(res => res);
   }
 
@@ -69,9 +69,9 @@ export default class Requester {
    * @returns {Promise}
    *
    */
-  oauth2Twitter(redirectUri) {
+  oauth2Twitter(redirectUri,refId) {
     return this._requestSender.sendRequest(
-        this._requestEndpoints.GetRoute("Oauth2Twitter", [redirectUri]),
+        this._requestEndpoints.GetRoute("Oauth2Twitter", [redirectUri,refId]),
         RequestMethods.GET).then(res => res);
   }
 
